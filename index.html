@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b8a61" />
+<title>Ave Labs Parking — Apresentação do MVP</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+<style>
+  :root {
+    --marca: #0b8a61; --marca-clara: #12a474; --marca-escura: #0a6e4f; --marca-fundo: #eefbf6;
+    --tinta: #0f1c2e; --texto: #334155; --suave: #64748b; --linha: #e2e8f0; --fundo: #f3f5f8;
+    --alerta: #b45309; --alerta-fundo: #fffbeb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--texto); background: var(--fundo); line-height: 1.55; }
+  h1, h2, h3 { color: var(--tinta); line-height: 1.15; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: var(--marca-escura); }
+  .caixa { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  nav.topo { position: sticky; top: 0; z-index: 5; background: rgba(15, 28, 46, 0.96); backdrop-filter: blur(6px); }
+  nav.topo .caixa { display: flex; align-items: center; gap: 18px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; }
+  nav.topo .marca { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; white-space: nowrap; text-decoration: none; }
+  nav.topo .marca b { color: #6ee7b7; }
+  nav.topo a.item { color: #cbd5e1; text-decoration: none; font-size: 14px; white-space: nowrap; padding: 6px 2px; }
+  nav.topo a.item:hover { color: #fff; }
+
+  header.capa { background: var(--tinta); color: #cbd5e1; padding: 72px 0 84px; }
+  header.capa h1 { color: #fff; font-size: clamp(34px, 6vw, 60px); font-weight: 800; letter-spacing: -0.02em; max-width: 16ch; }
+  header.capa h1 em { font-style: normal; color: #6ee7b7; }
+  header.capa .sub { font-size: clamp(17px, 2.2vw, 21px); margin-top: 20px; max-width: 58ch; }
+  .selo { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6ee7b7; margin-bottom: 18px; }
+  .numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 44px; }
+  .numero { border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 16px; padding: 18px; }
+  .numero strong { display: block; color: #fff; font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .numero span { font-size: 14px; }
+
+  section { padding: 68px 0; }
+  section.branca { background: #fff; }
+  .titulo-secao { font-size: clamp(26px, 3.6vw, 38px); font-weight: 800; letter-spacing: -0.01em; }
+  .olho { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--marca); margin-bottom: 10px; }
+  .intro { font-size: 18px; margin-top: 14px; max-width: 68ch; }
+
+  .grade { display: grid; gap: 16px; margin-top: 34px; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .cartao { background: #fff; border: 1px solid var(--linha); border-radius: 18px; padding: 22px; }
+  section.branca .cartao { background: var(--fundo); border-color: transparent; }
+  .cartao h3 { font-size: 19px; margin-bottom: 8px; }
+  .cartao .quem { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--suave); margin-bottom: 6px; }
+  .cartao ul { margin: 10px 0 0; padding-left: 18px; }
+  .cartao li { margin: 5px 0; }
+  .etiqueta { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+  .pronto { background: var(--marca-fundo); color: var(--marca-escura); }
+  .validar { background: var(--alerta-fundo); color: var(--alerta); }
+  .breve { background: #e0e7ff; color: #3730a3; }
+
+  .fluxo { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-top: 34px; counter-reset: passo; }
+  .passo { background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 18px; counter-increment: passo; }
+  .passo::before { content: counter(passo); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--marca); color: #fff; font-weight: 700; margin-bottom: 10px; }
+  .passo h3 { font-size: 16px; margin-bottom: 4px; }
+  .passo p { font-size: 14.5px; }
+
+  .destaque { background: var(--tinta); color: #cbd5e1; border-radius: 22px; padding: 30px; margin-top: 34px; }
+  .destaque h3 { color: #fff; font-size: 22px; margin-bottom: 8px; }
+  .destaque strong { color: #6ee7b7; }
+
+  .dois { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 34px; align-items: start; margin-top: 34px; }
+  @media (max-width: 820px) { .dois { grid-template-columns: 1fr; } }
+
+  /* Reproducao do cupom impresso (mesmo desenho gerado pelo sistema) */
+  .papel { background: #fff; color: #000; width: 272px; margin: 0 auto; padding: 14px 10px 20px; font-size: 12.5px; line-height: 1.35; box-shadow: 0 10px 30px rgba(15, 28, 46, 0.18); }
+  .papel .c { text-align: center; }
+  .papel .tr { border-top: 1px dashed #000; margin: 8px 0; }
+  .papel .l { display: flex; justify-content: space-between; gap: 10px; }
+  .papel .big { text-align: center; font-weight: 800; font-size: 30px; letter-spacing: 0.12em; }
+  .papel .qr { width: 110px; height: 110px; margin: 10px auto 4px; display: grid; grid-template-columns: repeat(11, 1fr); gap: 0; }
+  .papel .qr i { background: #000; }
+  .papel .qr i.b { background: #fff; }
+  .legenda { text-align: center; font-size: 13px; color: var(--suave); margin-top: 12px; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 26px; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid var(--linha); }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--suave); background: #f8fafc; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; color: var(--tinta); white-space: nowrap; }
+  .rolagem { overflow-x: auto; }
+
+  .linha-tempo { margin-top: 34px; display: grid; gap: 14px; }
+  .fase { display: grid; grid-template-columns: 150px 1fr; gap: 18px; background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 20px; }
+  .fase .quando { font-weight: 700; color: var(--tinta); }
+  .fase.feita { border-left: 5px solid var(--marca); }
+  .fase.proxima { border-left: 5px solid #6366f1; }
+  @media (max-width: 640px) { .fase { grid-template-columns: 1fr; gap: 6px; } }
+
+  footer { background: var(--tinta); color: #94a3b8; padding: 34px 0; font-size: 14px; }
+  footer b { color: #fff; }
+</style>
+</head>
+<body>
+
+<nav class="topo" aria-label="Seções">
+  <div class="caixa">
+    <a class="marca" href="#inicio">
+      <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0b8a61"/><path fill="#fff" fill-rule="evenodd" d="M18 50V14h17a12 12 0 0 1 0 24h-9v12zM26 21.5v9h8.5a4.5 4.5 0 0 0 0-9z"/><path fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M33 49q4.5-6 9 0q4.5-6 9 0"/></svg>
+      <span><b>Ave Labs</b> Parking</span>
+    </a>
+    <a class="item" href="#ideia">A ideia</a>
+    <a class="item" href="#ambientes">Ambientes</a>
+    <a class="item" href="#jornada">Jornada</a>
+    <a class="item" href="#pronto">O que já existe</a>
+    <a class="item" href="#controle">Controle</a>
+    <a class="item" href="#impressao">Impressão</a>
+    <a class="item" href="#validar">Falta validar</a>
+    <a class="item" href="#embreve">Em breve</a>
+  </div>
+</nav>
+
+<header class="capa" id="inicio">
+  <div class="caixa">
+    <span class="selo">MVP · versão 0.4 · novembro de 2026</span>
+    <h1>O estacionamento inteiro em <em>um só sistema</em>.</h1>
+    <p class="sub">Caixa, autoatendimento, pátio pelo celular e gestão trabalham com a mesma regra e os mesmos dados. O que o cliente vê no totem é exatamente o que o operador vê no caixa — e o dono vê no painel.</p>
+    <div class="numeros">
+      <div class="numero"><strong>4</strong><span>ambientes: caixa, celular, totem e gestão</span></div>
+      <div class="numero"><strong>1</strong><span>regra de cálculo para todos eles</span></div>
+      <div class="numero"><strong>38</strong><span>testes automáticos das regras de negócio</span></div>
+      <div class="numero"><strong>3</strong><span>perfis: operador, supervisor e administrador</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="ideia">
+  <div class="caixa">
+    <p class="olho">A ideia</p>
+    <h2 class="titulo-secao">O dono precisa confiar no número do fim do dia.</h2>
+    <p class="intro">Em muitos estacionamentos, o caixa, a maquininha, a planilha de mensalistas e o controle do pátio são coisas separadas. O valor cobrado depende de quem está atendendo, e o fechamento depende de confiança. O Ave Labs Parking junta tudo isso.</p>
+    <div class="grade g3">
+      <div class="cartao"><h3>Uma regra só</h3><p>Tolerância, primeira hora, frações e diária são calculadas em um único lugar. Caixa, celular e totem não têm como mostrar valores diferentes.</p></div>
+      <div class="cartao"><h3>Tudo deixa rastro</h3><p>Cada entrada, pagamento, sangria, estorno e autorização fica gravado com data, usuário, origem e terminal — e não pode ser apagado.</p></div>
+      <div class="cartao"><h3>Roda no que já existe</h3><p>Funciona no navegador: computador do caixa, tablet como totem, celular no pátio. Sem instalar aplicativo.</p></div>
+    </div>
+    <div class="destaque">
+      <h3>O que este MVP quer provar</h3>
+      <p>Que um dono de estacionamento consegue operar <strong>entrada, cobrança e saída</strong> com caixa e autoatendimento compartilhando a mesma regra, <strong>fechar o caixa do dia</strong> com conferência e enxergar o resultado em um painel.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ambientes" class="branca">
+  <div class="caixa">
+    <p class="olho">Ambientes</p>
+    <h2 class="titulo-secao">Quatro telas, cada uma para quem a usa.</h2>
+    <div class="grade g4">
+      <div class="cartao"><p class="quem">Operador</p><h3>PDV — frente de caixa</h3><p>Entrada, cobrança, serviços, mensalidades e caixa. Operado por teclado (F1 a F10) ou toque.</p></div>
+      <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Entrada de veículos lendo a placa com a câmera, consulta de valor e liberação de saída.</p></div>
+      <div class="cartao"><p class="quem">Cliente final</p><h3>Totem — autoatendimento</h3><p>O cliente digita a placa, confere o valor e paga por Pix, sem operador.</p></div>
+      <div class="cartao"><p class="quem">Supervisor e dono</p><h3>ERP — gestão</h3><p>Painel do dia, pátio, caixas, relatórios, mensalistas, serviços, terminais, tarifa, usuários e auditoria.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="jornada">
+  <div class="caixa">
+    <p class="olho">Jornada</p>
+    <h2 class="titulo-secao">Da cancela ao fechamento do caixa.</h2>
+    <div class="fluxo">
+      <div class="passo"><h3>Entrada</h3><p>Placa digitada no caixa ou lida pela câmera do celular. Sai o ticket impresso com QR Code.</p></div>
+      <div class="passo"><h3>Permanência</h3><p>O valor cresce conforme a tarifa. Mensalista em dia não paga estadia. Serviços, como lavagem, são somados.</p></div>
+      <div class="passo"><h3>Pagamento</h3><p>No caixa (dinheiro, débito, crédito ou Pix, até dividido) ou no totem, por Pix.</p></div>
+      <div class="passo"><h3>Saída</h3><p>Liberada só com o valor quitado. Depois de pagar há um prazo para sair; passou, cobra a diferença.</p></div>
+      <div class="passo"><h3>Fechamento</h3><p>O operador conta o dinheiro; o sistema compara com o esperado e imprime o relatório.</p></div>
+      <div class="passo"><h3>Gestão</h3><p>O dono vê faturamento, ocupação, caixas, estornos e auditoria, e exporta para planilha.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pronto" class="branca">
+  <div class="caixa">
+    <p class="olho">O que já existe</p>
+    <h2 class="titulo-secao">Funcionando hoje, com regra testada.</h2>
+    <p class="intro">Tudo abaixo está construído e coberto por testes automáticos. Itens que ainda dependem de validação em campo estão na seção "Falta validar".</p>
+    <div class="grade g2">
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Tarifa e estadia</h3><ul>
+        <li>Tolerância de entrada, primeira hora, frações e teto de diária.</li>
+        <li>Prazo para sair depois de pagar, com cobrança da diferença.</li>
+        <li>Uma placa não pode ter duas estadias abertas.</li>
+        <li>Tarifa e número de vagas ajustados pelo administrador.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Pagamentos</h3><ul>
+        <li>Dinheiro, débito, crédito e Pix; pagamento dividido em até quatro formas.</li>
+        <li>Clique duplo ou reenvio não gera cobrança em dobro.</li>
+        <li>Estorno com motivo, feito por supervisor ou administrador.</li>
+        <li>Pagar no caixa cancela o Pix pendente do totem.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Caixa</h3><ul>
+        <li>Abertura com fundo de troco; um caixa por operador.</li>
+        <li>Suprimento e sangria com motivo.</li>
+        <li>Fechamento com conferência do dinheiro contado.</li>
+        <li>Só o dinheiro entra na gaveta; cartão e Pix aparecem no resumo.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Mensalistas</h3><ul>
+        <li>Plano com validade; em dia, entra e sai sem pagar estadia.</li>
+        <li>Recebimento da mensalidade no caixa, renovando o plano por um mês.</li>
+        <li>Aviso de "vence em breve" e "atrasado", com a data do último pagamento.</li>
+        <li>O operador é avisado quando o veículo entra.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Serviços adicionais</h3><ul>
+        <li>Catálogo de serviços (lavagem, por exemplo) com preço.</li>
+        <li>Venda vinculada ao veículo, somada na cobrança.</li>
+        <li>O preço fica congelado no momento da venda.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Gestão</h3><ul>
+        <li>Painel do dia: faturamento, ocupação, entradas, saídas, caixas abertos.</li>
+        <li>Relatório por período, por dia, modalidade, origem e operador.</li>
+        <li>Exportação para planilha (CSV).</li>
+        <li>Auditoria de todas as operações.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Totem</h3><ul>
+        <li>Cada totem é ativado por um código próprio e pode ser bloqueado na hora.</li>
+        <li>O cliente só vê o necessário da própria estadia.</li>
+        <li>A tela nunca aprova pagamento: só a confirmação do provedor aprova.</li>
+        <li>Volta ao início sozinho depois de um tempo sem toque.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Usuários e acesso</h3><ul>
+        <li>Cada funcionário com o próprio usuário e senha.</li>
+        <li>Três perfis: operador, supervisor e administrador.</li>
+        <li>Bloqueio temporário após senhas erradas.</li>
+        <li>Acesso pelo celular e tablet em rede privada.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="controle">
+  <div class="caixa">
+    <p class="olho">Controle</p>
+    <h2 class="titulo-secao">O que protege o dinheiro.</h2>
+    <div class="grade g3">
+      <div class="cartao"><h3>Supervisor autoriza</h3><p>Sangria, fechamento com diferença, estorno e cancelamento não são feitos pelo operador sozinho. O supervisor digita a própria senha, e fica registrado quem autorizou o quê.</p></div>
+      <div class="cartao"><h3>Caixa fechado não muda</h3><p>Depois de fechado, nem o administrador altera o caixa: o próprio banco de dados recusa. Um estorno posterior aparece como ajuste, ao lado do fechamento original.</p></div>
+      <div class="cartao"><h3>Auditoria que não se apaga</h3><p>O histórico de operações não pode ser editado nem excluído. Cada linha diz quando, quem, de onde e em qual terminal.</p></div>
+    </div>
+    <div class="rolagem">
+    <table>
+      <thead><tr><th>Operação</th><th>Operador</th><th>Supervisor</th><th>Administrador</th></tr></thead>
+      <tbody>
+        <tr><td>Entrada, recebimento, saída</td><td>Sim</td><td>Sim</td><td>Sim</td></tr>
+        <tr><td>Sangria e fechamento com diferença</td><td>Com autorização</td><td>Sim</td><td>Sim</td></tr>
+        <tr><td>Estorno e cancelamento</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+        <tr><td>Painel, caixas, relatórios, auditoria</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+        <tr><td>Tarifa, serviços, terminais, usuários</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="impressao" class="branca">
+  <div class="caixa">
+    <p class="olho">Impressão</p>
+    <h2 class="titulo-secao">Papel na mão do cliente e do caixa.</h2>
+    <div class="dois">
+      <div>
+        <p class="intro" style="margin-top:0">Quatro documentos, em três formatos de papel. Cada computador escolhe o formato da impressora ligada nele, e há uma tela para conferir o layout antes de gastar papel.</p>
+        <div class="grade g2" style="margin-top:24px">
+          <div class="cartao"><h3>Documentos</h3><ul><li>Ticket de entrada, com QR Code</li><li>Comprovante de pagamento</li><li>Recibo de mensalidade</li><li>Fechamento de caixa, com assinaturas</li></ul></div>
+          <div class="cartao"><h3>Formatos</h3><ul><li>Bobina de 80 mm</li><li>Bobina de 58 mm</li><li>Folha A4</li></ul></div>
+        </div>
+        <div class="cartao" style="margin-top:16px"><h3>Impressoras</h3><p>A impressão passa pelo driver da impressora instalado no Windows. Por isso o mesmo layout atende térmicas de cupom — Daruma, Bematech, Elgin, Sweda e outras — e impressoras comuns. <strong>Ainda não houve teste em papel</strong>: é o próximo passo de validação.</p></div>
+      </div>
+      <div>
+        <div class="papel" role="img" aria-label="Exemplo do ticket de entrada impresso">
+          <div class="c"><svg viewBox="0 0 64 64" width="40" height="40"><rect width="64" height="64" rx="14" fill="#000"/><path fill="#fff" fill-rule="evenodd" d="M18 50V14h17a12 12 0 0 1 0 24h-9v12zM26 21.5v9h8.5a4.5 4.5 0 0 0 0-9z"/><path fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M33 49q4.5-6 9 0q4.5-6 9 0"/></svg></div>
+          <div class="c"><b style="font-size:15px">Estacionamento Exemplo</b><br><small>Ave Labs Parking</small></div>
+          <div class="tr"></div><div class="c"><b>TICKET DE ENTRADA</b></div><div class="tr"></div>
+          <div class="c"><small>Placa</small></div><div class="big">ABC1D23</div>
+          <div class="qr" id="qr" aria-hidden="true"></div>
+          <div class="c"><small>Número do ticket</small></div><div class="big" style="font-size:24px">482913</div>
+          <div class="tr"></div>
+          <div class="l"><span>Entrada</span><span>13/11/2026, 07:59</span></div>
+          <div class="l"><span>Operador</span><span>Maria</span></div>
+          <div class="l"><span>Terminal</span><span>PDV-01</span></div>
+          <div class="tr"></div>
+          <div class="c">Guarde este ticket. Na saída, informe a <b>placa</b> ou o <b>número do ticket</b>.</div>
+          <div class="tr"></div><div class="c"><small>Não é documento fiscal</small></div>
+        </div>
+        <p class="legenda">Reprodução ilustrativa do ticket de 80 mm. O QR Code do desenho é figurativo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="validar">
+  <div class="caixa">
+    <p class="olho">Falta validar</p>
+    <h2 class="titulo-secao">O que está feito, mas ainda não foi provado em campo.</h2>
+    <p class="intro">Um MVP serve para testar. Estes pontos funcionam em teste, e precisam da operação real para serem confirmados.</p>
+    <div class="grade g2">
+      <div class="cartao"><span class="etiqueta validar">Validar</span><h3>Leitura de placa pela câmera</h3><p>Funcionou com imagens de teste. Falta medir o acerto com placas reais — sol, reflexo, sujeira, noite, moto. A leitura é sempre uma sugestão: o operador confere antes de registrar.</p></div>
+      <div class="cartao"><span class="etiqueta validar">Validar</span><h3>Impressão em papel</h3><p>O layout está pronto nos três formatos. Falta imprimir na impressora que será usada e conferir largura, corte e leitura do QR Code.</p></div>
+      <div class="cartao"><span class="etiqueta validar">Simulado</span><h3>Pix do totem</h3><p>A jornada completa funciona, mas o Pix é <strong>simulado</strong>: não há dinheiro real. O caminho de confirmação já é o definitivo; falta contratar o provedor.</p></div>
+      <div class="cartao"><span class="etiqueta validar">Validar</span><h3>Uso em maquininha (POS)</h3><p>O sistema roda no navegador. Se uma maquininha específica aceita isso, precisa ser verificado modelo a modelo.</p></div>
+    </div>
+    <div class="destaque">
+      <h3>Hoje, no caixa</h3>
+      <p>Cartão e Pix recebidos no caixa são <strong>atestados pelo operador</strong>, com a maquininha avulsa ao lado. A integração direta com a maquininha (TEF) está prevista, não feita.</p>
+    </div>
+  </div>
+</section>
+
+<section id="embreve" class="branca">
+  <div class="caixa">
+    <p class="olho">Em breve</p>
+    <h2 class="titulo-secao">O caminho até o produto comercial.</h2>
+    <div class="linha-tempo">
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Ciclo básico</div></div><p>Entrada, cobrança e saída nos três ambientes, com a mesma regra.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Caixa e gestão</div></div><p>Caixa por operador, pagamento dividido, estorno, mensalistas, serviços, terminais, painel e relatórios.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Controles e pátio</div></div><p>Supervisor com autorização, usuários, caixa fechado imutável, mensalidades com aviso de atraso, entrada pelo celular com câmera e impressão.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix de verdade com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; cópia de segurança automática; recebimento pelo celular.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Automação</div></div><p>Leitura automática de placas por câmera fixa; abertura de cancela; funcionamento sem Internet com sincronização; vários computadores na mesma rede.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Versão em nuvem para várias unidades; emissão de nota fiscal; integração com maquininha (TEF); convênios, cortesias e descontos; modo condomínio; instalador; adequação à LGPD.</p></div>
+    </div>
+    <p class="intro" style="font-size:16px">As fases futuras dependem de decisões que ainda serão tomadas — escolha de provedor de pagamento, de equipamentos e de regras fiscais. Nada disso foi contratado.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="caixa">
+    <p><b>Ave Labs Parking</b> · MVP versão 0.4 · 13 de novembro de 2026</p>
+    <p style="margin-top:6px">Material de apresentação. Descreve o estado do protótipo de validação; não é oferta comercial nem documento técnico.</p>
+  </div>
+</footer>
+
+<script>
+  // Desenho figurativo de um QR Code (apenas ilustracao: nao codifica nada).
+  var linhas = ['11111110111','10000010101','10111010011','10111010110','10000010001','11111110101','00000000110','10110111011','01101001101','11010110010','10111011101'];
+  var qr = document.getElementById('qr');
+  linhas.join('').split('').forEach(function (c) { var i = document.createElement('i'); if (c === '0') i.className = 'b'; qr.appendChild(i); });
+</script>
+</body>
+</html>
