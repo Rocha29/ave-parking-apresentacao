@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b8a61" />
+<title>Ave Labs Parking — Instalação passo a passo</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+<style>
+  :root {
+    --marca: #0b8a61; --marca-escura: #0a6e4f; --marca-fundo: #eefbf6;
+    --tinta: #0f1c2e; --texto: #334155; --suave: #64748b; --linha: #e2e8f0; --fundo: #f3f5f8;
+    --alerta: #b45309; --alerta-fundo: #fffbeb; --erro: #991b1b; --erro-fundo: #fee2e2;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--texto); background: var(--fundo); line-height: 1.6; }
+  h1, h2, h3 { color: var(--tinta); line-height: 1.2; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: var(--marca-escura); }
+  .caixa { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  nav.topo { position: sticky; top: 0; z-index: 5; background: rgba(15, 28, 46, 0.96); }
+  nav.topo .caixa { display: flex; align-items: center; gap: 16px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+  nav.topo .marca { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; text-decoration: none; }
+  nav.topo .marca b { color: #6ee7b7; }
+  nav.topo .abas { display: flex; gap: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 999px; padding: 3px; flex-wrap: wrap; }
+  nav.topo .abas a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px; white-space: nowrap; }
+  nav.topo .abas a[aria-current="page"] { background: #fff; color: var(--tinta); }
+  header.capa { background: var(--tinta); color: #cbd5e1; padding: 56px 0 60px; }
+  header.capa h1 { color: #fff; font-size: clamp(30px, 5vw, 48px); font-weight: 800; }
+  header.capa p { margin-top: 16px; max-width: 64ch; font-size: 18px; }
+  .selo { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6ee7b7; margin-bottom: 14px; }
+  .legenda { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; font-size: 14px; }
+  .q { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; }
+  .q.cliente { background: var(--marca-fundo); color: var(--marca-escura); }
+  .q.medio { background: var(--alerta-fundo); color: var(--alerta); }
+  .q.tecnico { background: var(--erro-fundo); color: var(--erro); }
+  .q.plano { background: #e0e7ff; color: #3730a3; }
+  main { padding: 36px 0 60px; }
+  .indice { display: flex; flex-wrap: wrap; gap: 8px; }
+  .indice a { font-size: 13.5px; background: #fff; border: 1px solid var(--linha); border-radius: 999px; padding: 5px 12px; text-decoration: none; color: var(--tinta); }
+  .etapa { background: #fff; border: 1px solid var(--linha); border-radius: 18px; padding: 24px; margin-top: 22px; scroll-margin-top: 80px; }
+  .etapa > header { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+  .etapa .n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--marca); color: #fff; font-weight: 700; flex-shrink: 0; }
+  .etapa h2 { font-size: 21px; }
+  .etapa .quem { margin-left: auto; }
+  .etapa ol, .etapa ul { margin: 12px 0 0; padding-left: 22px; }
+  .etapa li { margin: 6px 0; }
+  .etapa p { margin-top: 12px; }
+  .colunas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+  @media (max-width: 760px) { .colunas { grid-template-columns: 1fr; } .etapa .quem { margin-left: 0; } }
+  .caminho { font-weight: 600; color: var(--marca-escura); }
+  .aviso { background: var(--alerta-fundo); color: #78350f; border-radius: 12px; padding: 12px 14px; margin-top: 14px; font-size: 15px; }
+  .hoje { background: var(--erro-fundo); color: #7f1d1d; border-radius: 12px; padding: 12px 14px; margin-top: 14px; font-size: 15px; }
+  .dica { background: var(--marca-fundo); color: #064e3b; border-radius: 12px; padding: 12px 14px; margin-top: 14px; font-size: 15px; }
+  figure { margin: 14px 0 0; }
+  figure button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--linha); box-shadow: 0 10px 26px rgba(15, 28, 46, 0.12); background: #fff; }
+  figure.celular { max-width: 230px; }
+  figure.celular img { border-radius: 22px; border: 6px solid var(--tinta); }
+  figcaption { font-size: 14px; color: var(--suave); margin-top: 8px; }
+  .simulada { border: 2px dashed var(--linha); border-radius: 12px; padding: 18px; background: #f8fafc; font-size: 15px; margin-top: 14px; }
+  .simulada .janela { background: #fff; border: 1px solid var(--linha); border-radius: 10px; padding: 16px; box-shadow: 0 6px 16px rgba(15, 28, 46, 0.08); }
+  .simulada .janela b { color: var(--tinta); }
+  .simulada .botoes { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+  .simulada .botoes span { border: 1px solid var(--linha); border-radius: 6px; padding: 4px 14px; font-size: 14px; }
+  .simulada .botoes span.pri { background: var(--marca); color: #fff; border-color: var(--marca); }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); background: #f8fafc; }
+  .rolagem { overflow-x: auto; }
+  .fontes { font-size: 14px; color: var(--suave); }
+  .fontes li { margin: 4px 0; }
+  footer { background: var(--tinta); color: #94a3b8; padding: 28px 0; font-size: 14px; }
+  footer b { color: #fff; }
+  dialog.zoom { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+  dialog.zoom::backdrop { background: rgba(15, 28, 46, 0.85); }
+  dialog.zoom img { display: block; max-width: 96vw; max-height: 88vh; border-radius: 12px; }
+  dialog.zoom p { color: #fff; text-align: center; margin-top: 8px; font-size: 14px; }
+  @media print { nav.topo { display: none; } .etapa { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<nav class="topo" aria-label="Seções">
+  <div class="caixa">
+    <a class="marca" href="index.html">
+      <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0b8a61"/><path fill="#fff" fill-rule="evenodd" d="M18 50V14h17a12 12 0 0 1 0 24h-9v12zM26 21.5v9h8.5a4.5 4.5 0 0 0 0-9z"/><path fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M33 49q4.5-6 9 0q4.5-6 9 0"/></svg>
+      <span><b>Ave Labs</b> Parking</span>
+    </a>
+    <div class="abas">
+      <a href="index.html#inicio">Apresentação</a>
+      <a href="instalacao.html" aria-current="page">Instalação</a>
+    </div>
+  </div>
+</nav>
+
+<header class="capa">
+  <div class="caixa">
+    <span class="selo">Uso interno · validação</span>
+    <h1>Instalação passo a passo</h1>
+    <p>Todos os passos para colocar um estacionamento no ar, com as telas. Objetivo: entregar este roteiro a alguém de fora,
+      medir o tempo de cada passo e ver onde trava. Assim decidimos o que o cliente faz sozinho e o que vira serviço
+      pago de implantação.</p>
+    <div class="legenda">
+      <span class="q cliente">Cliente faz</span>
+      <span class="q medio">Depende do equipamento</span>
+      <span class="q tecnico">Hoje só técnico</span>
+      <span class="q plano">Planejado (ainda não existe)</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="caixa">
+    <nav class="indice" aria-label="Etapas">
+      <a href="#antes">0. Antes de começar</a>
+      <a href="#servidor">1. Servidor</a>
+      <a href="#licenca">2. Licença</a>
+      <a href="#acesso">3. Primeiro acesso</a>
+      <a href="#dados">4. Dados</a>
+      <a href="#tarifa">5. Tarifa e vagas</a>
+      <a href="#impressora">6. Impressora</a>
+      <a href="#aparelhos">7. Celular e tablet</a>
+      <a href="#totem">8. Totem</a>
+      <a href="#copias">9. Cópias</a>
+      <a href="#veredito">Quem faz o quê</a>
+    </nav>
+
+    <section class="etapa" id="antes">
+      <header><span class="n">0</span><h2>Antes de começar: o que o cliente precisa ter</h2></header>
+      <ul>
+        <li><b>Um computador para ser o servidor</b>, normalmente o do caixa, ligado durante o expediente. Ele guarda o banco
+          de dados. O sistema foi testado em Windows 11 com 8 GB de memória. Outras configurações ainda não foram medidas.</li>
+        <li><b>Rede Wi-Fi</b> que alcance o pátio, se houver celular de manobrista ou totem.</li>
+        <li><b>Internet</b> para ativar a licença. Depois, o sistema funciona até 7 dias sem Internet.</li>
+        <li><b>Impressora térmica</b> (opcional) com o driver do fabricante.</li>
+        <li><b>Celular ou tablet</b> (opcional) com navegador atualizado: Chrome no Android ou Safari no iPhone/iPad.</li>
+        <li>O <b>código de ativação</b> enviado pela Ave Labs (gerado na Central).</li>
+      </ul>
+    </section>
+
+    <section class="etapa" id="servidor">
+      <header><span class="n">1</span><h2>Instalar o servidor</h2><span class="quem"><span class="q tecnico">Hoje só técnico</span> <span class="q plano">Instalador planejado</span></span></header>
+      <div class="hoje"><b>Como é hoje:</b> não existe instalador. O sistema roda em modo de teste num computador da Ave Labs
+        (Node.js, comandos no terminal). Os celulares só chegam a ele pela VPN Tailscale. Para um cliente real ainda
+        faltam três coisas: (a) o instalador, (b) o servidor entregar as telas sozinho, sem as ferramentas de
+        desenvolvimento, e (c) abrir na rede do estacionamento com endereço seguro (HTTPS), que a câmera do celular exige.
+        Isso é a etapa (c) da ADR 0004 e espera aprovação.</div>
+      <p><b>Como deve ficar com o instalador</b> (desenho para validar, ainda não construído):</p>
+      <div class="simulada" role="img" aria-label="Desenho do instalador: janela com o endereço do servidor e um QR Code">
+        <div class="janela">
+          <b>Ave Labs Parking — Instalação concluída</b>
+          <p style="margin-top:8px">O servidor já está rodando e liga sozinho com o computador.</p>
+          <p style="margin-top:8px">Nos celulares e tablets da mesma rede, abra: <b>https://caixa.parking.local</b> (exemplo) ou leia o QR Code.</p>
+          <div class="botoes"><span>Abrir o ERP</span><span class="pri">Concluir</span></div>
+        </div>
+      </div>
+      <ol>
+        <li>Baixar o instalador no site da Ave Labs e abrir.</li>
+        <li>Avançar, Avançar, Concluir. Ele instala o servidor como serviço do Windows e libera a porta no firewall.</li>
+        <li>No fim, a janela mostra o <b>endereço do servidor</b> e um QR Code. É ele que os celulares e tablets usam
+          (etapa 7).</li>
+      </ol>
+      <p>Alternativa planejada: o <b>Linux personalizado</b>, um mini PC que já sai com o sistema instalado. Só ligar e ativar.</p>
+    </section>
+
+    <section class="etapa" id="licenca">
+      <header><span class="n">2</span><h2>Ativar a licença</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li>Entrar no ERP (etapa 3) e abrir <span class="caminho">ERP › Licença</span>.</li>
+            <li>Digitar o código de ativação da Ave Labs (ex.: <b>ABCD-2345</b>) e tocar em <b>Ativar</b>.</li>
+            <li>A situação fica <b>Ativa</b>. A renovação é automática, de hora em hora.</li>
+          </ol>
+          <div class="dica">Sem Internet no local: a Ave Labs gera um código de liberação na Central e manda por WhatsApp.
+            O cliente cola no mesmo lugar.</div>
+        </div>
+        <figure><button type="button"><img src="telas/erp-licenca.jpg" alt="Tela ERP Licença com a situação Ativa, plano e data paga" loading="lazy" width="800" height="500"></button><figcaption>ERP › Licença depois de ativada.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="acesso">
+      <header><span class="n">3</span><h2>Primeiro acesso e troca das senhas</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li>No servidor, abrir o endereço do sistema e escolher <b>ERP</b>.</li>
+            <li>Entrar com o usuário administrador inicial, que a Ave Labs informa na entrega.</li>
+            <li>Em <span class="caminho">ERP › Usuários</span>, trocar a senha do administrador e do caixa. Depois, criar um
+              usuário para cada pessoa, com o perfil certo: Operador, Supervisor ou Administrador.</li>
+          </ol>
+          <div class="aviso">As senhas iniciais são as mesmas em toda instalação. Trocar no primeiro dia é obrigatório.</div>
+        </div>
+        <figure><button type="button"><img src="telas/erp-entrar.jpg" alt="Tela de entrada do ERP com usuário e senha" loading="lazy" width="800" height="600"></button><figcaption>Entrada do ERP.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="dados">
+      <header><span class="n">4</span><h2>Dados do estacionamento e Pix</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li><span class="caminho">ERP › Estabelecimento</span>: nome, CNPJ, endereço, telefone e horário de funcionamento.
+              Esses dados saem no ticket e no comprovante.</li>
+            <li>Mais abaixo, na mesma tela: a <b>chave Pix</b> do estacionamento, o nome do recebedor e a cidade, para o QR
+              do Pix no caixa e no celular.</li>
+            <li><b>Salvar</b>.</li>
+          </ol>
+        </div>
+        <figure><button type="button"><img src="telas/erp-estabelecimento.jpg" alt="Tela Estabelecimento com nome, CNPJ, endereço e telefone de exemplo" loading="lazy" width="800" height="500"></button><figcaption>Dados de exemplo.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="tarifa">
+      <header><span class="n">5</span><h2>Tarifa e vagas</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li><span class="caminho">ERP › Tarifa</span>: tolerância, primeira hora, fração adicional, diária e prazo para sair
+              depois de pagar.</li>
+            <li>Na mesma tela: o <b>total de vagas</b> do pátio.</li>
+            <li>Salvar e conferir um exemplo de cálculo no PDV.</li>
+          </ol>
+          <div class="aviso">O número de vagas entra no contrato (cobrança por vaga). Se passar do contratado, a Ave Labs é
+            avisada. O sistema não bloqueia.</div>
+        </div>
+        <figure><button type="button"><img src="telas/erp-tarifa.jpg" alt="Tela Tarifa e vagas com tolerância, primeira hora e fração" loading="lazy" width="800" height="500"></button><figcaption>ERP › Tarifa.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="impressora">
+      <header><span class="n">6</span><h2>Impressora de cupom</h2><span class="quem"><span class="q medio">Depende do equipamento</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li><b>Instalar o driver do fabricante</b> no computador do caixa: CD da caixa, site oficial ou revendedor (ver
+              a lista abaixo). O sistema não instala DLL nem driver: ele imprime pelo driver do Windows.</li>
+            <li>Windows 11: <span class="caminho">Configurações › Bluetooth e dispositivos › Impressoras e scanners</span>.
+              A impressora precisa aparecer na lista. Imprimir uma página de teste do Windows.</li>
+            <li>Nas preferências do driver: papel de 80 ou 58 mm e corte automático.</li>
+            <li>No sistema, <span class="caminho">ERP › Impressão</span>: escolher o formato (80 mm, 58 mm ou A4) e
+              imprimir o teste.</li>
+          </ol>
+          <div class="aviso">Ponto de maior risco para fazer sozinho: modelo serial (porta COM), driver errado ou Windows de
+            32/64 bits. Ainda não houve teste em impressora física. É a próxima validação.</div>
+        </div>
+        <figure><button type="button"><img src="telas/erp-impressao.jpg" alt="Tela Impressão com as opções bobina 80 mm, 58 mm e folha A4" loading="lazy" width="800" height="500"></button><figcaption>ERP › Impressão: o formato vale para cada computador.</figcaption></figure>
+      </div>
+      <p><b>Onde pegar o driver</b> (conferido em 14/11/2026; nenhum link direto de arquivo foi validado):</p>
+      <ul>
+        <li><b>Elgin</b>: site oficial, área de impressoras térmicas de cupom (<a href="https://www.elgin.com.br/automacao-comercial/impressora-termica-de-cupom">elgin.com.br</a>) ou assistência técnica.</li>
+        <li><b>Sweda</b>: suporte oficial (<a href="https://sweda.com.br/suporte/">sweda.com.br/suporte</a>).</li>
+        <li><b>Daruma</b> e <b>Bematech</b>: pedir ao revendedor ou usar o CD da caixa. O site daruma.com.br não respondeu
+          na consulta, e a busca não achou página oficial de driver.</li>
+        <li>Não baixar de sites de "drivers grátis" (DriverMax e parecidos): arquivo sem origem garantida.</li>
+      </ul>
+    </section>
+
+    <section class="etapa" id="aparelhos">
+      <header><span class="n">7</span><h2>Celulares e tablets: como encontram o servidor</h2><span class="quem"><span class="q cliente">Cliente faz</span> <span class="q tecnico">Rede local: hoje só técnico</span></span></header>
+      <div class="colunas">
+        <div>
+          <p style="margin-top:0"><b>Não há tela de "configurar servidor" no aparelho.</b> O celular ou tablet só precisa
+            <b>abrir o endereço do servidor no navegador</b>. Esse endereço já é o servidor: as telas e os dados vêm dele.</p>
+          <ol>
+            <li>Conectar o aparelho ao <b>Wi-Fi do estacionamento</b> (a mesma rede do servidor).</li>
+            <li>Abrir no navegador o endereço do servidor e escolher a tela: <b>/movel</b> (pátio), <b>/pdv</b> (caixa),
+              <b>/erp</b> ou <b>/totem</b>. Exemplo: <span class="caminho">https://endereço-do-servidor/movel</span>.</li>
+            <li>Entrar com o usuário da pessoa.</li>
+            <li>No menu do navegador, <b>Adicionar à tela inicial</b>. A tela vira um ícone e abre sem a barra do navegador.</li>
+          </ol>
+          <div class="hoje"><b>Hoje:</b> o endereço e os QR Codes ficam em <span class="caminho">ERP › Aparelhos</span> (v0.11). No
+            computador de testes da Ave Labs o acesso ainda é pela VPN Tailscale; o pacote de instalação já abre para a
+            rede do estacionamento, mas sem HTTPS (câmera ao vivo desligada) até a opção A da ADR 0006.</div>
+          <div class="dica">A leitura de placa pela câmera ao vivo só funciona em endereço <b>https</b>. Sem ele, o
+            botão "Tirar foto" continua funcionando.</div>
+        </div>
+        <figure class="celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular do pátio com leitura de placa" loading="lazy" width="750" height="1624"></button><figcaption>Celular do pátio aberto pelo endereço do servidor.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="totem">
+      <header><span class="n">8</span><h2>Tablet como totem de autoatendimento</h2><span class="quem"><span class="q medio">Depende do equipamento</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li>No computador, abrir o ERP <b>pelo mesmo endereço que o tablet vai usar</b> (o QR Code leva esse endereço).</li>
+            <li><span class="caminho">ERP › Terminais</span>: código (ex.: TOTEM-01), nome e localização. Depois,
+              <b>Cadastrar e gerar token</b>.</li>
+            <li>Aparece um <b>QR Code</b> (só uma vez). No tablet, ler o QR com a câmera: o totem abre já ativado.</li>
+            <li>Sem câmera: abrir <span class="caminho">/totem</span> no tablet e colar o token.</li>
+            <li>Travar o tablet na tela do totem:
+              <ul>
+                <li>Android: <b>Fixar app</b> (Configurações › Segurança › Fixar app). Depois, Visão geral › ícone do app › Fixar.</li>
+                <li>iPad: <b>Acesso Guiado</b> (Ajustes › Acessibilidade › Acesso Guiado). Para iniciar, três toques no botão superior.</li>
+              </ul>
+            </li>
+          </ol>
+          <div class="aviso">O totem mostra valores, mas não aprova pagamento sozinho. Sem token, ele não consulta nada.
+            "Terminal não ativado" = repetir os passos 2 e 3.</div>
+        </div>
+        <div>
+          <figure><button type="button"><img src="telas/erp-terminais.jpg" alt="Tela Terminais com o formulário de novo totem" loading="lazy" width="800" height="500"></button><figcaption>ERP › Terminais: cadastrar o totem.</figcaption></figure>
+          <figure><button type="button"><img src="telas/totem-ativacao.jpg" alt="Tela do totem pedindo ativação" loading="lazy" width="800" height="600"></button><figcaption>Tablet ainda sem token.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="etapa" id="copias">
+      <header><span class="n">9</span><h2>Conferir as cópias de segurança</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li><span class="caminho">ERP › Cópias de segurança</span>: <b>Fazer cópia agora</b>.</li>
+            <li><b>Baixar</b> e guardar fora do computador (pendrive ou nuvem). Repetir toda semana.</li>
+            <li>Se o cliente usa OneDrive ou Google Drive, a Ave Labs pode configurar uma pasta extra que recebe cada cópia
+              sozinha.</li>
+          </ol>
+        </div>
+        <figure><button type="button"><img src="telas/erp-copias.jpg" alt="Tela Cópias de segurança com a lista de cópias e botões Baixar" loading="lazy" width="800" height="500"></button><figcaption>ERP › Cópias de segurança.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="veredito">
+      <header><h2>Quem faz o quê: hoje e com o instalador</h2></header>
+      <div class="rolagem">
+        <table>
+          <thead><tr><th>Etapa</th><th>Hoje</th><th>Com o instalador</th></tr></thead>
+          <tbody>
+            <tr><td>1. Servidor</td><td><span class="q tecnico">Técnico</span></td><td><span class="q cliente">Cliente</span> (a validar)</td></tr>
+            <tr><td>2–5. Licença, senhas, dados, tarifa</td><td><span class="q cliente">Cliente</span> com este roteiro</td><td><span class="q cliente">Cliente</span></td></tr>
+            <tr><td>6. Impressora</td><td><span class="q medio">Depende do modelo</span></td><td><span class="q medio">Depende do modelo</span></td></tr>
+            <tr><td>7. Celular e tablet</td><td><span class="q tecnico">Técnico</span> (VPN)</td><td><span class="q cliente">Cliente</span> (QR do instalador)</td></tr>
+            <tr><td>8. Totem</td><td><span class="q medio">Assistido</span></td><td><span class="q medio">Assistido</span> (travar o tablet)</td></tr>
+            <tr><td>9. Cópias</td><td><span class="q cliente">Cliente</span></td><td><span class="q cliente">Cliente</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>Leitura atual:</b> enquanto o instalador não existe, a implantação é obrigatoriamente feita pela Ave Labs.
+        Com o instalador, as etapas de software (1 a 5, 7 e 9) tendem a ficar com o cliente. Impressora e totem dependem do
+        equipamento e são os candidatos a "implantação assistida" paga. O valor dessa implantação é decisão comercial (issue 17).</p>
+      <p><b>Como validar:</b> entregar esta página a duas ou três pessoas que não conhecem o sistema, cronometrar cada
+        etapa e anotar onde pediram ajuda. Treinamento em vídeos curtos (5 a 10 min por tela) está no backlog.</p>
+      <p style="margin-top:18px"><b>Fontes</b></p>
+      <ul class="fontes">
+        <li>Fixar app no Android: <a href="https://support.google.com/android/answer/9455138?hl=pt-BR">Ajuda do Android (Google)</a></li>
+        <li>Acesso Guiado no iPhone/iPad: <a href="https://support.apple.com/pt-br/111795">Suporte Apple</a></li>
+        <li>Drivers: <a href="https://www.elgin.com.br/automacao-comercial/impressora-termica-de-cupom">Elgin</a>, <a href="https://sweda.com.br/suporte/">Sweda</a> (consultados em 14/11/2026)</li>
+        <li>Câmera ao vivo só em HTTPS e acesso pela Tailscale: <code>docs/AMBIENTE.md</code></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="caixa">
+    <p><b>Ave Labs Parking</b> · roteiro de instalação para validação · versão 0.11 · 14 de novembro de 2026</p>
+    <p style="margin-top:6px">As telas são do protótipo, com dados de exemplo. O instalador e a rede local ainda não existem.</p>
+  </div>
+</footer>
+
+<dialog class="zoom" id="zoom" aria-label="Tela ampliada"><img alt="" /><p></p></dialog>
+<script>
+  var zoom = document.getElementById('zoom');
+  document.querySelectorAll('figure button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var img = b.querySelector('img');
+      zoom.querySelector('img').src = img.src;
+      zoom.querySelector('img').alt = img.alt;
+      zoom.querySelector('p').textContent = img.alt;
+      zoom.showModal();
+    });
+  });
+  zoom.addEventListener('click', function () { zoom.close(); });
+</script>
+</body>
+</html>

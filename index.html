@@ -98,6 +98,85 @@
 
   footer { background: var(--tinta); color: #94a3b8; padding: 34px 0; font-size: 14px; }
   footer b { color: #fff; }
+
+  /* Abas: Apresentacao | Arvore de conhecimento */
+  nav.topo .abas { display: flex; gap: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 999px; padding: 3px; flex-shrink: 0; }
+  nav.topo .abas a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px; white-space: nowrap; }
+  nav.topo .abas a[aria-current="page"] { background: #fff; color: var(--tinta); }
+  nav.topo .caixa { overflow: visible; }
+  nav.topo .itens { display: flex; gap: 18px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  nav.topo .itens::-webkit-scrollbar { display: none; }
+  @media (max-width: 640px) { nav.topo .caixa { flex-wrap: wrap; row-gap: 6px; } nav.topo .marca span { display: none; } nav.topo .itens { flex-basis: 100%; } }
+  [hidden] { display: none !important; }
+  section, .grupo, header.capa { scroll-margin-top: 64px; }
+  @media (max-width: 640px) { section, .grupo, header.capa { scroll-margin-top: 140px; } }
+
+  /* Licenca: esquema servidor local <-> Central */
+  .esquema { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; margin-top: 34px; }
+  .esquema .no { background: #fff; border: 1px solid var(--linha); border-radius: 18px; padding: 20px; }
+  .esquema .no h3 { font-size: 18px; margin-bottom: 6px; }
+  .esquema .no.central { border: 2px solid var(--marca); }
+  .esquema .setas { display: grid; gap: 10px; font-size: 13px; color: var(--suave); text-align: center; }
+  .esquema .setas span { display: block; background: var(--marca-fundo); color: var(--marca-escura); border-radius: 999px; padding: 6px 12px; font-weight: 600; }
+  @media (max-width: 760px) { .esquema { grid-template-columns: 1fr; } }
+  .regua { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; margin-top: 30px; border-radius: 16px; overflow: hidden; border: 1px solid var(--linha); }
+  .regua div { padding: 16px; font-size: 14px; background: #fff; border-right: 1px solid var(--linha); }
+  .regua div:last-child { border-right: 0; }
+  .regua b { display: block; color: var(--tinta); font-size: 15px; margin-bottom: 4px; }
+  .regua .ok { border-top: 5px solid var(--marca); }
+  .regua .av { border-top: 5px solid #f59e0b; }
+  .regua .ca { border-top: 5px solid #f97316; }
+  .regua .re { border-top: 5px solid #dc2626; }
+
+  /* Arvore de conhecimento */
+  .interno { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+  .ferramentas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; align-items: center; }
+  .ferramentas input { flex: 1; min-width: 220px; font: inherit; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--linha); background: #fff; }
+  .ferramentas button { font: inherit; font-size: 14px; font-weight: 600; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--linha); background: #fff; color: var(--tinta); cursor: pointer; }
+  .indice { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .indice a { font-size: 13.5px; background: #fff; border: 1px solid var(--linha); border-radius: 999px; padding: 5px 12px; text-decoration: none; color: var(--tinta); }
+  .grupo { margin-top: 40px; }
+  .grupo > h2 { font-size: 24px; margin-bottom: 4px; }
+  .grupo > p { color: var(--suave); }
+  details.arvore { background: #fff; border: 1px solid var(--linha); border-radius: 16px; margin-top: 14px; }
+  details.arvore > summary { cursor: pointer; padding: 16px 20px; font-weight: 700; color: var(--tinta); font-size: 17px; list-style: none; display: flex; gap: 10px; align-items: baseline; }
+  details.arvore > summary::-webkit-details-marker { display: none; }
+  details.arvore > summary::before { content: "▸"; color: var(--marca); transition: transform 0.15s; }
+  details.arvore[open] > summary::before { transform: rotate(90deg); }
+  details.arvore > .corpo { padding: 0 20px 18px; }
+  .ramo { border-left: 3px solid var(--linha); margin: 10px 0 0 6px; padding-left: 16px; }
+  .ramo details { margin-top: 8px; }
+  .ramo summary { cursor: pointer; font-weight: 600; color: var(--tinta); }
+  .no-q, .no-a, .no-x, .no-s { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 6px; padding: 2px 7px; margin-right: 6px; vertical-align: 1px; }
+  .no-q { background: #e0e7ff; color: #3730a3; }
+  .no-a { background: var(--marca-fundo); color: var(--marca-escura); }
+  .no-x { background: #fee2e2; color: #991b1b; }
+  .no-s { background: var(--alerta-fundo); color: var(--alerta); }
+  .ramo p, .ramo li { font-size: 15px; }
+  .ramo ol, .ramo ul { margin: 6px 0; padding-left: 20px; }
+  .msg { font-family: Consolas, "Courier New", monospace; font-size: 13.5px; background: #f1f5f9; border-radius: 6px; padding: 1px 6px; color: var(--tinta); }
+  .caminho { font-weight: 600; color: var(--marca-escura); }
+  .legenda-nos { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; font-size: 14px; }
+  .vazio { margin-top: 20px; color: var(--suave); }
+  @media print { nav.topo, .ferramentas, .indice { display: none; } details.arvore, .ramo details { display: block; } }
+
+  /* Prints das telas */
+  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 28px; margin-top: 34px; align-items: start; }
+  .galeria .celulares { display: flex; gap: 18px; justify-content: center; }
+  .galeria .celulares figure.tela.celular { flex: 1 1 0; min-width: 0; }
+  figure.tela { margin: 0; }
+  figure.tela button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  figure.tela img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--linha); box-shadow: 0 12px 30px rgba(15, 28, 46, 0.12); background: #fff; }
+  figure.tela.celular { max-width: 220px; }
+  figure.tela.celular img { border-radius: 22px; border: 6px solid var(--tinta); }
+  figure.tela figcaption { font-size: 14px; color: var(--suave); margin-top: 10px; }
+  figure.tela figcaption b { color: var(--tinta); display: block; font-size: 15px; }
+  .ramo figure.tela { margin: 12px 0 6px; max-width: 560px; }
+  .ramo figure.tela.celular { max-width: 200px; }
+  dialog.zoom { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+  dialog.zoom::backdrop { background: rgba(15, 28, 46, 0.85); }
+  dialog.zoom img { display: block; max-width: 96vw; max-height: 88vh; border-radius: 12px; }
+  dialog.zoom p { color: #fff; text-align: center; margin-top: 8px; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -108,26 +187,36 @@
       <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0b8a61"/><path fill="#fff" fill-rule="evenodd" d="M18 50V14h17a12 12 0 0 1 0 24h-9v12zM26 21.5v9h8.5a4.5 4.5 0 0 0 0-9z"/><path fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M33 49q4.5-6 9 0q4.5-6 9 0"/></svg>
       <span><b>Ave Labs</b> Parking</span>
     </a>
-    <a class="item" href="#ideia">A ideia</a>
-    <a class="item" href="#ambientes">Ambientes</a>
-    <a class="item" href="#jornada">Jornada</a>
-    <a class="item" href="#pronto">O que já existe</a>
-    <a class="item" href="#controle">Controle</a>
-    <a class="item" href="#impressao">Impressão</a>
-    <a class="item" href="#validar">Falta validar</a>
-    <a class="item" href="#embreve">Em breve</a>
+    <div class="abas" role="tablist" aria-label="Conteúdo">
+      <a href="#inicio" id="aba-apresentacao" aria-current="page">Apresentação</a>
+      <a href="instalacao.html">Instalação</a>
+    </div>
+    <div class="itens" id="itens-apresentacao">
+      <a class="item" href="#ideia">A ideia</a>
+      <a class="item" href="#ambientes">Ambientes</a>
+      <a class="item" href="#telas">Telas</a>
+      <a class="item" href="#jornada">Jornada</a>
+      <a class="item" href="#pronto">O que já existe</a>
+      <a class="item" href="#app-mensalista">App do mensalista</a>
+      <a class="item" href="#controle">Controle</a>
+      <a class="item" href="#licenca">Assinatura</a>
+      <a class="item" href="#impressao">Impressão</a>
+      <a class="item" href="#validar">Falta validar</a>
+      <a class="item" href="#embreve">Em breve</a>
+    </div>
   </div>
 </nav>
 
+<div id="vista-apresentacao">
 <header class="capa" id="inicio">
   <div class="caixa">
-    <span class="selo">MVP · versão 0.4 · novembro de 2026</span>
+    <span class="selo">MVP · versão 0.13 · novembro de 2026</span>
     <h1>O estacionamento inteiro em <em>um só sistema</em>.</h1>
     <p class="sub">Caixa, autoatendimento, pátio pelo celular e gestão trabalham com a mesma regra e os mesmos dados. O que o cliente vê no totem é exatamente o que o operador vê no caixa — e o dono vê no painel.</p>
     <div class="numeros">
       <div class="numero"><strong>4</strong><span>ambientes: caixa, celular, totem e gestão</span></div>
       <div class="numero"><strong>1</strong><span>regra de cálculo para todos eles</span></div>
-      <div class="numero"><strong>38</strong><span>testes automáticos das regras de negócio</span></div>
+      <div class="numero"><strong>105</strong><span>testes automáticos das regras de negócio</span></div>
       <div class="numero"><strong>3</strong><span>perfis: operador, supervisor e administrador</span></div>
     </div>
   </div>
@@ -156,14 +245,40 @@
     <h2 class="titulo-secao">Quatro telas, cada uma para quem a usa.</h2>
     <div class="grade g4">
       <div class="cartao"><p class="quem">Operador</p><h3>PDV — frente de caixa</h3><p>Entrada, cobrança, serviços, mensalidades e caixa. Operado por teclado (F1 a F10) ou toque.</p></div>
-      <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Entrada de veículos lendo a placa com a câmera, consulta de valor e liberação de saída.</p></div>
+      <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Entrada de veículos lendo a placa com a câmera, recebimento (dinheiro, maquininha ou Pix pelo QR do estacionamento), comprovante por WhatsApp e liberação de saída.</p></div>
       <div class="cartao"><p class="quem">Cliente final</p><h3>Totem — autoatendimento</h3><p>O cliente digita a placa, confere o valor e paga por Pix, sem operador.</p></div>
       <div class="cartao"><p class="quem">Supervisor e dono</p><h3>ERP — gestão</h3><p>Painel do dia, pátio, caixas, relatórios, mensalistas, serviços, terminais, tarifa, usuários e auditoria.</p></div>
     </div>
   </div>
 </section>
 
-<section id="jornada">
+<section id="telas">
+  <div class="caixa">
+    <p class="olho">Telas</p>
+    <h2 class="titulo-secao">Como o sistema aparece para cada um.</h2>
+    <p class="intro">Telas reais do sistema, com dados de demonstração. Toque na imagem para ampliar. As telas do app do mensalista estão em <a href="#app-mensalista">App do mensalista</a>.</p>
+    <div class="galeria">
+      <figure class="tela"><button type="button"><img src="telas/pdv-cobranca.jpg" alt="PDV com um ticket aberto: placa, permanência, valor a receber e formas de pagamento" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>PDV — frente de caixa</b>Placa ou número do ticket, valor a receber e forma de pagamento. Ao lado, quem está no pátio.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-painel.jpg" alt="Painel do ERP com faturamento, veículos no pátio, entradas, saídas e ocupação" loading="lazy" width="800" height="506"></button>
+        <figcaption><b>ERP — painel do dono</b>Faturamento do dia, da semana e do mês, ocupação, caixas abertos e serviços pendentes.</figcaption></figure>
+      <div class="celulares">
+        <figure class="tela celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular no pátio: placa, ler placa com a câmera, registrar entrada e veículos no pátio" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — pátio</b>Entrada lendo a placa com a câmera.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/celular-receber.jpg" alt="Celular com ticket aberto e botões para receber em dinheiro, débito, crédito ou Pix" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — receber</b>Dinheiro, maquininha ou Pix, ali mesmo.</figcaption></figure>
+      </div>
+      <figure class="tela"><button type="button"><img src="telas/erp-licenca.jpg" alt="Aba Licença do ERP com situação ativa, plano, data paga e campos de ativação" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>ERP — licença</b>O cliente vê o plano, até quando está pago e quantos dias funciona sem Internet.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/central-painel.jpg" alt="Painel da Central Ave Labs com clientes, receita, situação e instalações online" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Central Ave Labs</b>A visão da Ave Labs: todos os clientes, pagamentos, instalações online e alertas.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/pdv-relatar.jpg" alt="Janela Relatar no PDV para enviar problema ou sugestão de melhoria" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Relatar</b>Qualquer usuário manda um problema ou sugestão; vira tarefa para a equipe.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="jornada" class="branca">
   <div class="caixa">
     <p class="olho">Jornada</p>
     <h2 class="titulo-secao">Da cancela ao fechamento do caixa.</h2>
@@ -178,7 +293,7 @@
   </div>
 </section>
 
-<section id="pronto" class="branca">
+<section id="pronto">
   <div class="caixa">
     <p class="olho">O que já existe</p>
     <h2 class="titulo-secao">Funcionando hoje, com regra testada.</h2>
@@ -203,7 +318,9 @@
         <li>Plano com validade; em dia, entra e sai sem pagar estadia.</li>
         <li>Recebimento da mensalidade no caixa, renovando o plano por um mês.</li>
         <li>Aviso de "vence em breve" e "atrasado", com a data do último pagamento.</li>
-        <li>O operador é avisado quando o veículo entra.</li></ul></div>
+        <li>O operador é avisado quando o veículo entra.</li>
+        <li>Vários veículos por contrato e limite de carros no pátio ao mesmo tempo.</li>
+        <li>Contrato suspenso ou cancelado, com motivo, autorização e auditoria.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Serviços adicionais</h3><ul>
         <li>Catálogo de serviços (lavagem, por exemplo) com preço.</li>
         <li>Venda vinculada ao veículo, somada na cobrança.</li>
@@ -223,11 +340,56 @@
         <li>Três perfis: operador, supervisor e administrador.</li>
         <li>Bloqueio temporário após senhas erradas.</li>
         <li>Acesso pelo celular e tablet em rede privada.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Pátio pelo celular</h3><ul>
+        <li>Recebe no celular, com o caixa do operador aberto.</li>
+        <li>Pix pelo QR Code da chave do próprio estacionamento.</li>
+        <li>Comprovante enviado por WhatsApp.</li>
+        <li>Andamento dos serviços: solicitado, em execução, concluído.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Evolução e assinatura</h3><ul>
+        <li>Botão "Relatar": bug ou sugestão vira uma tarefa para a equipe Ave Labs.</li>
+        <li>Licença por assinatura com renovação automática e proteção contra troca de data.</li>
+        <li>Central Ave Labs com todos os clientes, pagamentos e instalações (em teste).</li></ul></div>
     </div>
   </div>
 </section>
 
-<section id="controle">
+<section id="app-mensalista" class="branca">
+  <div class="caixa">
+    <p class="olho">App do mensalista · em teste</p>
+    <h2 class="titulo-secao">O mensalista acompanha o plano pelo celular.</h2>
+    <p class="intro">AVE Parking Mensalista é um aplicativo que o cliente instala na tela do celular (sem loja). Ele vê vencimento, pagamentos, veículos e avisos, e faz pedidos ao estacionamento. O app nunca muda o contrato sozinho: tudo chega ao ERP para o estacionamento atender ou recusar.</p>
+    <div class="grade g3">
+      <div class="cartao"><h3>Acesso por código</h3><p>No ERP, o gestor gera um código para o mensalista (vale uma vez, por 7 dias) e envia pelo WhatsApp. O mesmo caminho serve para quem esqueceu a senha. Ninguém cria conta sem o estacionamento liberar.</p></div>
+      <div class="cartao"><h3>O que o cliente vê</h3><p>Situação do plano, vencimento, valor, veículos autorizados, últimos pagamentos com comprovante, entradas e saídas, avisos do estacionamento e notificações quando algo muda.</p></div>
+      <div class="cartao"><h3>O que o cliente pede</h3><p>Incluir, trocar ou remover veículo, atualizar telefone ou e-mail, alterar plano, relatar problema ou mandar mensagem. Cada pedido mostra se foi recebido, atendido ou recusado, com a resposta.</p></div>
+      <div class="cartao"><h3>Pagamento honesto</h3><p>O app mostra o Pix do estacionamento com o valor da mensalidade. Quem dá a baixa é o estacionamento, depois de conferir. "Avisar que paguei" só pede a conferência. Pagamento confirmado automaticamente precisa de um provedor contratado (próxima fase).</p></div>
+      <div class="cartao"><h3>Funciona sem internet no estacionamento</h3><p>O servidor do estacionamento envia uma cópia mínima para a nuvem a cada minuto. Sem internet, o pátio funciona igual, e o app mostra a data dos dados e avisa que podem estar desatualizados.</p></div>
+      <div class="cartao"><h3>Privacidade</h3><p>Só vão para a nuvem os contratos com acesso ao app. E-mail guardado cifrado, termos aceitos com data e versão, e o cliente baixa os próprios dados ou exclui a conta pelo app.</p></div>
+      <div class="cartao"><h3>Aviso no celular</h3><p>Com as notificações ativadas, o cliente recebe no celular, mesmo com o app fechado: mensalidade vencendo ou vencida, pagamento registrado, veículos alterados, resposta dos pedidos e avisos do estacionamento. Usa o padrão dos navegadores, sem serviço pago. No iPhone, só com o app instalado na tela inicial.</p></div>
+      <div class="cartao"><h3>QR de entrada</h3><p>O app mostra um QR que muda a cada 30 segundos. No PDV, o leitor USB lê o QR e abre o contrato com os veículos; no celular do operador, a câmera lê (Android). O QR só identifica: o operador confere a placa do carro e registra a entrada, com as mesmas regras de sempre.</p></div>
+      <div class="cartao"><h3>Convite sem digitar</h3><p>A mensagem do WhatsApp leva um link que abre o app já em "Primeiro acesso" com o código preenchido. O QR da tela do código faz o mesmo no balcão. Se o cliente colar a mensagem inteira, o app pega só o código.</p></div>
+    </div>
+    <div class="galeria">
+      <div class="celulares">
+        <figure class="tela celular"><button type="button"><img src="telas/app-primeiro-acesso.jpg" alt="App do mensalista na tela Primeiro acesso, com o código do estacionamento já preenchido" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Primeiro acesso</b>O link do WhatsApp abre com o código preenchido.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/app-inicio.jpg" alt="Início do app: plano em dia, vencimento, mensalidade, botão do QR de entrada, convite para avisos no celular e veículos" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Início</b>Plano, vencimento, QR de entrada e avisos no celular.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/app-qr.jpg" alt="QR de entrada em tela cheia, com contagem de segundos até mudar" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>QR de entrada</b>Muda a cada 30 segundos.</figcaption></figure>
+      </div>
+      <figure class="tela"><button type="button"><img src="telas/erp-contrato-app.jpg" alt="ERP, Mensalistas, Contrato e app: veículos do contrato, situação, últimas passagens e código de acesso gerado com QR e envio por WhatsApp" loading="lazy" width="800" height="500"></button>
+          <figcaption><b>ERP — contrato e app</b>Veículos, situação do contrato, passagens e o código de acesso com QR e WhatsApp.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-app-mensalista.jpg" alt="Aba App do mensalista no ERP: indicadores, sincronização e pedidos do app para atender ou recusar" loading="lazy" width="800" height="506"></button>
+          <figcaption><b>ERP — App do mensalista</b>Indicadores, sincronização e os pedidos que chegam do app.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/pdv-qr-mensalista.jpg" alt="PDV depois de ler o QR do mensalista: contrato em dia e botão Registrar entrada em cada veículo" loading="lazy" width="800" height="500"></button>
+          <figcaption><b>PDV — QR do mensalista</b>O leitor lê o QR; o operador confere a placa e registra a entrada.</figcaption></figure>
+    </div>
+    <p class="intro" style="font-size:16px">Nesta etapa a nuvem é a própria Central de teste, nesta máquina. Em produção ela vai para um servidor hospedado (custo a aprovar). Endereço do app: <b>/m</b>.</p>
+  </div>
+</section>
+
+<section id="controle" class="branca">
   <div class="caixa">
     <p class="olho">Controle</p>
     <h2 class="titulo-secao">O que protege o dinheiro.</h2>
@@ -247,6 +409,70 @@
         <tr><td>Tarifa, serviços, terminais, usuários</td><td>Não</td><td>Não</td><td>Sim</td></tr>
       </tbody>
     </table>
+    </div>
+  </div>
+</section>
+
+<section id="licenca">
+  <div class="caixa">
+    <p class="olho">Assinatura</p>
+    <h2 class="titulo-secao">Como o cliente assina, usa e renova.</h2>
+    <p class="intro">O sistema roda no computador do estacionamento e continua funcionando se a Internet cair. A Ave Labs controla todos os clientes pela <strong>Central Ave Labs</strong>, que emite a licença de cada instalação e recebe o sinal de vida de cada uma.</p>
+
+    <div class="esquema" role="img" aria-label="O servidor do estacionamento conversa com a Central Ave Labs pela Internet">
+      <div class="no">
+        <p class="quem">No estacionamento</p>
+        <h3>Servidor local</h3>
+        <p>Caixa, celular, totem e gestão. Funciona sem Internet. Guarda a licença e confere a assinatura dela, mas não consegue fabricar uma.</p>
+      </div>
+      <div class="setas">
+        <span>→ sinal de vida, de hora em hora</span>
+        <span>← licença assinada + hora oficial</span>
+      </div>
+      <div class="no central">
+        <p class="quem">Na Ave Labs</p>
+        <h3>Central Ave Labs</h3>
+        <p>Clientes, planos, pagamentos, instalações e alertas. Só ela emite licença.</p>
+      </div>
+    </div>
+
+    <div class="fluxo">
+      <div class="passo"><h3>Contrato</h3><p>A Ave Labs cadastra o cliente e o plano na Central e gera um código de ativação (ex.: <span class="msg">WR9J-GAFC</span>).</p></div>
+      <div class="passo"><h3>Ativação</h3><p>O administrador do estacionamento digita o código em ERP › Licença. A licença fica presa àquele computador.</p></div>
+      <div class="passo"><h3>Uso</h3><p>O sistema renova a licença sozinho, de hora em hora, sem ninguém digitar nada.</p></div>
+      <div class="passo"><h3>Pagamento</h3><p>Pagou, a Central estende a data. A próxima renovação já leva a data nova ao cliente.</p></div>
+      <div class="passo"><h3>Sem Internet</h3><p>Funciona por até 7 dias. Se precisar de mais, o suporte manda um código de liberação por WhatsApp.</p></div>
+    </div>
+
+    <div class="regua" aria-label="Linha do tempo do vencimento">
+      <div class="ok"><b>Em dia</b>Tudo funciona.</div>
+      <div class="av"><b>Faltam 15 dias</b>Faixa amarela: "sua assinatura vence em N dias".</div>
+      <div class="ca"><b>Venceu: 5 dias de carência</b>Faixa vermelha em todas as telas. Tudo ainda funciona.</div>
+      <div class="re"><b>Modo restrito</b>Bloqueia novas entradas, serviços e mensalidades. Saída, caixa e relatórios continuam.</div>
+    </div>
+
+    <div class="grade g3">
+      <div class="cartao"><h3>Ninguém fica com o carro preso</h3><p>Mesmo com a assinatura vencida, o veículo que está no pátio paga e sai, o caixa fecha e os relatórios e os dados continuam acessíveis. O dado é do cliente.</p></div>
+      <div class="cartao"><h3>Trocar a data não adianta</h3><p>Quem decide a data é a Central, não o relógio do computador. O sistema também lembra o maior horário que já viu: voltar o relógio é detectado e coloca o sistema em modo restrito.</p></div>
+      <div class="cartao"><h3>Fraude aparece na Central</h3><p>Cada instalação manda contadores que só crescem. Banco restaurado, relógio voltado ou a mesma licença em outro computador viram alerta no painel da Ave Labs no primeiro contato.</p></div>
+    </div>
+
+    <div class="rolagem">
+    <table>
+      <thead><tr><th>Camada de proteção</th><th>O que faz</th></tr></thead>
+      <tbody>
+        <tr><td>Licença assinada</td><td>Só a Central assina. Alterar plano ou data no arquivo invalida a licença.</td></tr>
+        <tr><td>Validade curta</td><td>A licença vale 7 dias sem contato. Ficar desconectado de propósito compra no máximo uma semana.</td></tr>
+        <tr><td>Hora confiável</td><td>Hora da Central no último contato e registros da auditoria, que não podem ser apagados. Relógio mais de 10 minutos atrás disso é detectado.</td></tr>
+        <tr><td>Contadores na Central</td><td>Tickets, auditoria e caixas só crescem. Se diminuírem, o banco foi restaurado ou mexido.</td></tr>
+        <tr><td>Vínculo com a máquina</td><td>A licença copiada para outro computador é recusada; trocar de computador passa pela Central.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="destaque">
+      <h3>Situação hoje</h3>
+      <p>Licença, proteção e Central estão <strong>construídas e testadas</strong>, rodando só no computador da Ave Labs para teste, com o bloqueio desligado. Faltam: Central hospedada na nuvem, cobrança automática (boleto, Pix ou cartão), instalador para Windows e a definição dos <strong>planos e preços</strong>.</p>
     </div>
   </div>
 </section>
@@ -312,26 +538,47 @@
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Ciclo básico</div></div><p>Entrada, cobrança e saída nos três ambientes, com a mesma regra.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Caixa e gestão</div></div><p>Caixa por operador, pagamento dividido, estorno, mensalistas, serviços, terminais, painel e relatórios.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Controles e pátio</div></div><p>Supervisor com autorização, usuários, caixa fechado imutável, mensalidades com aviso de atraso, entrada pelo celular com câmera e impressão.</p></div>
-      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix de verdade com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; cópia de segurança automática; recebimento pelo celular.</p></div>
-      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Automação</div></div><p>Leitura automática de placas por câmera fixa; abertura de cancela; funcionamento sem Internet com sincronização; vários computadores na mesma rede.</p></div>
-      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Versão em nuvem para várias unidades; emissão de nota fiscal; integração com maquininha (TEF); convênios, cortesias e descontos; modo condomínio; instalador; adequação à LGPD.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Operação e pátio</div></div><p>Cópia de segurança automática, aviso de fechamento, lembrete de mensalidade por WhatsApp, recebimento e Pix pelo celular, comprovante por WhatsApp e andamento dos serviços.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Evolução e assinatura</div></div><p>Botão "Relatar" que leva bugs e sugestões para a equipe; licença por assinatura com proteção contra troca de data e Central Ave Labs em teste.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Em teste</span><div class="quando">App do mensalista</div></div><p>Contrato com vários veículos, suspensão e cancelamento; app no celular com acesso por código, pedidos aprovados no ERP, avisos e notificações, rodando na Central de teste.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix do totem com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; integração com maquininha (TEF).</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Central hospedada (com o app do mensalista na internet) e cobrança automática da assinatura; mensalidade paga pelo app com confirmação do provedor; instalador para Windows; emissão de nota fiscal; convênios, cortesias e descontos; adequação à LGPD.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Automação</div></div><p>Leitura automática de placas por câmera fixa; abertura de cancela; vários computadores na mesma rede; versão em nuvem para várias unidades.</p></div>
     </div>
     <p class="intro" style="font-size:16px">As fases futuras dependem de decisões que ainda serão tomadas — escolha de provedor de pagamento, de equipamentos e de regras fiscais. Nada disso foi contratado.</p>
   </div>
 </section>
+</div>
+
 
 <footer>
   <div class="caixa">
-    <p><b>Ave Labs Parking</b> · MVP versão 0.4 · 13 de novembro de 2026</p>
+    <p><b>Ave Labs Parking</b> · MVP versão 0.13 · 15 de novembro de 2026</p>
     <p style="margin-top:6px">Material de apresentação. Descreve o estado do protótipo de validação; não é oferta comercial nem documento técnico.</p>
   </div>
 </footer>
+
+<dialog class="zoom" id="zoom" aria-label="Tela ampliada"><img alt="" /><p></p></dialog>
 
 <script>
   // Desenho figurativo de um QR Code (apenas ilustracao: nao codifica nada).
   var linhas = ['11111110111','10000010101','10111010011','10111010110','10000010001','11111110101','00000000110','10110111011','01101001101','11010110010','10111011101'];
   var qr = document.getElementById('qr');
   linhas.join('').split('').forEach(function (c) { var i = document.createElement('i'); if (c === '0') i.className = 'b'; qr.appendChild(i); });
+
+
+  // Ampliar print: toque abre em tela cheia; toque, Esc ou fora fecha.
+  var zoom = document.getElementById('zoom');
+  document.querySelectorAll('figure.tela button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var img = b.querySelector('img');
+      zoom.querySelector('img').src = img.src;
+      zoom.querySelector('img').alt = img.alt;
+      zoom.querySelector('p').textContent = img.alt;
+      zoom.showModal();
+    });
+  });
+  zoom.addEventListener('click', function () { zoom.close(); });
 </script>
 </body>
 </html>
