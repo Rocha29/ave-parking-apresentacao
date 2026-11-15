@@ -124,6 +124,7 @@
       <a href="#aparelhos">7. Celular e tablet</a>
       <a href="#totem">8. Totem</a>
       <a href="#copias">9. Cópias</a>
+      <a href="#vistoria">10. Vistoria</a>
       <a href="#veredito">Quem faz o quê</a>
     </nav>
 
@@ -170,7 +171,7 @@
       <div class="colunas">
         <div>
           <ol>
-            <li>Entrar no ERP (etapa 3) e abrir <span class="caminho">ERP › Licença</span>.</li>
+            <li>Entrar no ERP (etapa 3) e abrir <span class="caminho">ERP › Sistema › Licença</span>.</li>
             <li>Digitar o código de ativação da Ave Labs (ex.: <b>ABCD-2345</b>) e tocar em <b>Ativar</b>.</li>
             <li>A situação fica <b>Ativa</b>. A renovação é automática, de hora em hora.</li>
           </ol>
@@ -188,12 +189,18 @@
           <ol>
             <li>No servidor, abrir o endereço do sistema e escolher <b>ERP</b>.</li>
             <li>Entrar com o usuário administrador inicial, que a Ave Labs informa na entrega.</li>
-            <li>Em <span class="caminho">ERP › Usuários</span>, trocar a senha do administrador e do caixa. Depois, criar um
+            <li>Em <span class="caminho">ERP › Cadastros › Usuários</span>, trocar a senha do administrador e do caixa. Depois, criar um
               usuário para cada pessoa, com o perfil certo: Operador, Supervisor ou Administrador.</li>
           </ol>
           <div class="aviso">As senhas iniciais são as mesmas em toda instalação. Trocar no primeiro dia é obrigatório.</div>
+          <div class="dica">O menu do ERP fica em grupos: <b>Operação</b>, <b>Clientes</b>, <b>Cadastros</b>,
+            <b>Configurações</b> e <b>Sistema</b>. No computador ele fica na lateral; no celular, no botão <b>Menu</b>.
+            Os passos abaixo dizem o grupo de cada tela.</div>
         </div>
-        <figure><button type="button"><img src="telas/erp-entrar.jpg" alt="Tela de entrada do ERP com usuário e senha" loading="lazy" width="800" height="600"></button><figcaption>Entrada do ERP.</figcaption></figure>
+        <div>
+          <figure><button type="button"><img src="telas/erp-entrar.jpg" alt="Tela de entrada do ERP com usuário e senha" loading="lazy" width="800" height="600"></button><figcaption>Entrada do ERP.</figcaption></figure>
+          <figure><button type="button"><img src="telas/erp-usuarios.jpg" alt="Tela Usuários com o formulário de novo usuário e a lista com perfil e situação" loading="lazy" width="800" height="500"></button><figcaption>ERP › Cadastros › Usuários: um usuário por pessoa.</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -202,7 +209,7 @@
       <div class="colunas">
         <div>
           <ol>
-            <li><span class="caminho">ERP › Estabelecimento</span>: nome, CNPJ, endereço, telefone e horário de funcionamento.
+            <li><span class="caminho">ERP › Configurações › Estabelecimento</span>: nome, CNPJ, endereço, telefone e horário de funcionamento.
               Esses dados saem no ticket e no comprovante.</li>
             <li>Mais abaixo, na mesma tela: a <b>chave Pix</b> do estacionamento, o nome do recebedor e a cidade, para o QR
               do Pix no caixa e no celular.</li>
@@ -218,7 +225,7 @@
       <div class="colunas">
         <div>
           <ol>
-            <li><span class="caminho">ERP › Tarifa</span>: tolerância, primeira hora, fração adicional, diária e prazo para sair
+            <li><span class="caminho">ERP › Cadastros › Tarifa</span>: tolerância, primeira hora, fração adicional, diária e prazo para sair
               depois de pagar.</li>
             <li>Na mesma tela: o <b>total de vagas</b> do pátio.</li>
             <li>Salvar e conferir um exemplo de cálculo no PDV.</li>
@@ -240,7 +247,7 @@
             <li>Windows 11: <span class="caminho">Configurações › Bluetooth e dispositivos › Impressoras e scanners</span>.
               A impressora precisa aparecer na lista. Imprimir uma página de teste do Windows.</li>
             <li>Nas preferências do driver: papel de 80 ou 58 mm e corte automático.</li>
-            <li>No sistema, <span class="caminho">ERP › Impressão</span>: escolher o formato (80 mm, 58 mm ou A4) e
+            <li>No sistema, <span class="caminho">ERP › Configurações › Impressão</span>: escolher o formato (80 mm, 58 mm ou A4) e
               imprimir o teste.</li>
           </ol>
           <div class="aviso">Ponto de maior risco para fazer sozinho: modelo serial (porta COM), driver errado ou Windows de
@@ -271,13 +278,16 @@
             <li>Entrar com o usuário da pessoa.</li>
             <li>No menu do navegador, <b>Adicionar à tela inicial</b>. A tela vira um ícone e abre sem a barra do navegador.</li>
           </ol>
-          <div class="hoje"><b>Hoje:</b> o endereço e os QR Codes ficam em <span class="caminho">ERP › Aparelhos</span> (v0.11). No
+          <div class="hoje"><b>Hoje:</b> o endereço e os QR Codes ficam em <span class="caminho">ERP › Configurações › Celulares e tablets</span>. No
             computador de testes da Ave Labs o acesso ainda é pela VPN Tailscale; o pacote de instalação já abre para a
             rede do estacionamento, mas sem HTTPS (câmera ao vivo desligada) até a opção A da ADR 0006.</div>
           <div class="dica">A leitura de placa pela câmera ao vivo só funciona em endereço <b>https</b>. Sem ele, o
             botão "Tirar foto" continua funcionando.</div>
         </div>
-        <figure class="celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular do pátio com leitura de placa" loading="lazy" width="750" height="1624"></button><figcaption>Celular do pátio aberto pelo endereço do servidor.</figcaption></figure>
+        <div>
+          <figure><button type="button"><img src="telas/erp-aparelhos.jpg" alt="Tela Celulares e tablets do ERP com o passo a passo para abrir o sistema no aparelho" loading="lazy" width="800" height="500"></button><figcaption>ERP › Configurações › Celulares e tablets.</figcaption></figure>
+          <figure class="celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular do pátio com leitura de placa" loading="lazy" width="750" height="1624"></button><figcaption>Celular do pátio aberto pelo endereço do servidor.</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -287,7 +297,7 @@
         <div>
           <ol>
             <li>No computador, abrir o ERP <b>pelo mesmo endereço que o tablet vai usar</b> (o QR Code leva esse endereço).</li>
-            <li><span class="caminho">ERP › Terminais</span>: código (ex.: TOTEM-01), nome e localização. Depois,
+            <li><span class="caminho">ERP › Cadastros › Terminais</span>: código (ex.: TOTEM-01), nome e localização. Depois,
               <b>Cadastrar e gerar token</b>.</li>
             <li>Aparece um <b>QR Code</b> (só uma vez). No tablet, ler o QR com a câmera: o totem abre já ativado.</li>
             <li>Sem câmera: abrir <span class="caminho">/totem</span> no tablet e colar o token.</li>
@@ -313,13 +323,38 @@
       <div class="colunas">
         <div>
           <ol>
-            <li><span class="caminho">ERP › Cópias de segurança</span>: <b>Fazer cópia agora</b>.</li>
+            <li><span class="caminho">ERP › Sistema › Cópias de segurança</span>: <b>Fazer cópia agora</b>.</li>
             <li><b>Baixar</b> e guardar fora do computador (pendrive ou nuvem). Repetir toda semana.</li>
             <li>Se o cliente usa OneDrive ou Google Drive, a Ave Labs pode configurar uma pasta extra que recebe cada cópia
               sozinha.</li>
           </ol>
         </div>
-        <figure><button type="button"><img src="telas/erp-copias.jpg" alt="Tela Cópias de segurança com a lista de cópias e botões Baixar" loading="lazy" width="800" height="500"></button><figcaption>ERP › Cópias de segurança.</figcaption></figure>
+        <figure><button type="button"><img src="telas/erp-copias.jpg" alt="Tela Cópias de segurança com a lista de cópias e botões Baixar" loading="lazy" width="800" height="500"></button><figcaption>ERP › Sistema › Cópias de segurança.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="etapa" id="vistoria">
+      <header><span class="n">10</span><h2>Vistoria de avarias (opcional)</h2><span class="quem"><span class="q cliente">Cliente faz</span></span></header>
+      <div class="colunas">
+        <div>
+          <ol>
+            <li><span class="caminho">ERP › Configurações › Vistoria de avarias</span> (só administrador). Vem desligada.</li>
+            <li>Escolher o modo:
+              <ul>
+                <li><b>Simples, sem foto:</b> o operador marca no desenho do carro onde há dano e o tipo.</li>
+                <li><b>Com foto:</b> a mesma marcação, com até 6 fotos pelo celular ou pela câmera do PDV.</li>
+              </ul>
+            </li>
+            <li>Com foto: decidir se a foto é obrigatória e por quantos dias guardar (padrão 90). <b>Salvar vistoria</b>.</li>
+            <li>Recarregar o PDV e os celulares. O botão da vistoria aparece no ticket de quem está no pátio.</li>
+          </ol>
+          <div class="aviso">As fotos ficam no banco e entram nas cópias de segurança. Muitas fotos por dia aumentam o tamanho
+            do banco: prazo menor deixa o banco menor.</div>
+        </div>
+        <div>
+          <figure><button type="button"><img src="telas/erp-vistoria.jpg" alt="Tela Vistoria de avarias com os modos desligada, simples sem foto e com foto" loading="lazy" width="800" height="500"></button><figcaption>ERP › Configurações › Vistoria de avarias.</figcaption></figure>
+          <figure><button type="button"><img src="telas/pdv-vistoria.jpg" alt="Vistoria no PDV com a traseira do carro marcada como amassada" loading="lazy" width="800" height="500"></button><figcaption>Como fica no PDV.</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -335,11 +370,12 @@
             <tr><td>7. Celular e tablet</td><td><span class="q tecnico">Técnico</span> (VPN)</td><td><span class="q cliente">Cliente</span> (QR do instalador)</td></tr>
             <tr><td>8. Totem</td><td><span class="q medio">Assistido</span></td><td><span class="q medio">Assistido</span> (travar o tablet)</td></tr>
             <tr><td>9. Cópias</td><td><span class="q cliente">Cliente</span></td><td><span class="q cliente">Cliente</span></td></tr>
+            <tr><td>10. Vistoria (opcional)</td><td><span class="q cliente">Cliente</span></td><td><span class="q cliente">Cliente</span></td></tr>
           </tbody>
         </table>
       </div>
       <p><b>Leitura atual:</b> enquanto o instalador não existe, a implantação é obrigatoriamente feita pela Ave Labs.
-        Com o instalador, as etapas de software (1 a 5, 7 e 9) tendem a ficar com o cliente. Impressora e totem dependem do
+        Com o instalador, as etapas de software (1 a 5, 7, 9 e 10) tendem a ficar com o cliente. Impressora e totem dependem do
         equipamento e são os candidatos a "implantação assistida" paga. O valor dessa implantação é decisão comercial (issue 17).</p>
       <p><b>Como validar:</b> entregar esta página a duas ou três pessoas que não conhecem o sistema, cronometrar cada
         etapa e anotar onde pediram ajuda. Treinamento em vídeos curtos (5 a 10 min por tela) está no backlog.</p>
@@ -356,7 +392,7 @@
 
 <footer>
   <div class="caixa">
-    <p><b>Ave Labs Parking</b> · roteiro de instalação para validação · versão 0.11 · 14 de novembro de 2026</p>
+    <p><b>Ave Labs Parking</b> · roteiro de instalação para validação · versão 0.14 · 15 de novembro de 2026</p>
     <p style="margin-top:6px">As telas são do protótipo, com dados de exemplo. O instalador e a rede local ainda não existem.</p>
   </div>
 </footer>
