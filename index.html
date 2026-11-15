@@ -173,6 +173,18 @@
   figure.tela figcaption b { color: var(--tinta); display: block; font-size: 15px; }
   .ramo figure.tela { margin: 12px 0 6px; max-width: 560px; }
   .ramo figure.tela.celular { max-width: 200px; }
+  /* Secao de diferencial (Gestao e insights): fundo escuro como a capa. */
+  section.escura { background: var(--tinta); color: #cbd5e1; }
+  section.escura .titulo-secao { color: #fff; }
+  section.escura .olho { color: #6ee7b7; }
+  section.escura .cartao { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.12); color: #cbd5e1; }
+  section.escura .cartao h3 { color: #fff; }
+  section.escura .cartao .quem { color: #6ee7b7; }
+  section.escura figure.tela figcaption { color: #94a3b8; }
+  section.escura figure.tela figcaption b { color: #fff; }
+  section.escura figure.tela img { border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); }
+  section.escura figure.tela.celular img { border-color: #334155; }
+  section.escura .nota { font-size: 14px; color: #94a3b8; margin-top: 26px; }
   dialog.zoom { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
   dialog.zoom::backdrop { background: rgba(15, 28, 46, 0.85); }
   dialog.zoom img { display: block; max-width: 96vw; max-height: 88vh; border-radius: 12px; }
@@ -195,6 +207,7 @@
       <a class="item" href="#ideia">A ideia</a>
       <a class="item" href="#ambientes">Ambientes</a>
       <a class="item" href="#telas">Telas</a>
+      <a class="item" href="#gestao">Gestão e insights</a>
       <a class="item" href="#jornada">Jornada</a>
       <a class="item" href="#pronto">O que já existe</a>
       <a class="item" href="#app-mensalista">App do mensalista</a>
@@ -210,13 +223,13 @@
 <div id="vista-apresentacao">
 <header class="capa" id="inicio">
   <div class="caixa">
-    <span class="selo">MVP · versão 0.14 · novembro de 2026</span>
+    <span class="selo">MVP · versão 0.15 · novembro de 2026</span>
     <h1>O estacionamento inteiro em <em>um só sistema</em>.</h1>
     <p class="sub">Caixa, autoatendimento, pátio pelo celular e gestão trabalham com a mesma regra e os mesmos dados. O que o cliente vê no totem é exatamente o que o operador vê no caixa — e o dono vê no painel.</p>
     <div class="numeros">
       <div class="numero"><strong>4</strong><span>ambientes: caixa, celular, totem e gestão</span></div>
       <div class="numero"><strong>1</strong><span>regra de cálculo para todos eles</span></div>
-      <div class="numero"><strong>113</strong><span>testes automáticos das regras de negócio</span></div>
+      <div class="numero"><strong>119</strong><span>testes automáticos das regras de negócio</span></div>
       <div class="numero"><strong>3</strong><span>perfis: operador, supervisor e administrador</span></div>
     </div>
   </div>
@@ -247,7 +260,7 @@
       <div class="cartao"><p class="quem">Operador</p><h3>PDV — frente de caixa</h3><p>Entrada, cobrança, serviços, mensalidades e caixa. Operado por teclado (F1 a F10) ou toque.</p></div>
       <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Entrada de veículos lendo a placa com a câmera, recebimento (dinheiro, maquininha ou Pix pelo QR do estacionamento), comprovante por WhatsApp e liberação de saída.</p></div>
       <div class="cartao"><p class="quem">Cliente final</p><h3>Totem — autoatendimento</h3><p>O cliente digita a placa, confere o valor e paga por Pix, sem operador.</p></div>
-      <div class="cartao"><p class="quem">Supervisor e dono</p><h3>ERP — gestão</h3><p>Painel do dia, pátio, caixas, relatórios, mensalistas, serviços, terminais, tarifa, usuários e auditoria.</p></div>
+      <div class="cartao"><p class="quem">Supervisor e dono</p><h3>ERP — gestão</h3><p>Painel do dia, pátio, caixas, relatórios, gestão e insights (fluxo de caixa, convites para mensalista), mensalistas, serviços, terminais, tarifa, usuários e auditoria.</p></div>
     </div>
   </div>
 </section>
@@ -285,6 +298,41 @@
           <figcaption><b>ERP no celular</b>Menu em grupos: Operação, Clientes, Cadastros, Configurações e Sistema.</figcaption></figure>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="gestao" class="escura">
+  <div class="caixa">
+    <p class="olho">Diferencial · Gestão e insights</p>
+    <h2 class="titulo-secao">O sistema mostra ao dono onde ganhar mais.</h2>
+    <p class="intro">Além de registrar, o Ave Labs Parking lê o próprio movimento e aponta o que fazer: quem convidar para mensalista, que horário lota, onde sobra vaga, quanto ainda vai entrar no caixa e quem da equipe precisa de atenção. Tudo com os números do próprio estacionamento.</p>
+    <div class="grade g2">
+      <div class="cartao"><p class="quem">O que olhar agora</p><h3>Achados em linguagem do dono</h3><p>"R$ 530 em mensalidades atrasadas", "4 clientes avulsos para convidar", "horários perto da lotação". Cada achado leva ao detalhe.</p></div>
+      <div class="cartao"><p class="quem">Fluxo de caixa</p><h3>O que entrou, saiu e vai entrar</h3><p>Estadias e mensalidades por dia e por forma de pagamento, estornos no dia em que saíram, comparação com o período anterior e as mensalidades previstas para os próximos 30 dias. Exporta para planilha.</p></div>
+      <div class="cartao"><p class="quem">Convite para mensalista</p><h3>Quem já vem todo dia</h3><p>O sistema acha o cliente avulso frequente, mostra quanto ele gasta comparado à mensalidade e avisa o operador quando a placa entra: "Ofereça a mensalidade".</p></div>
+      <div class="cartao"><p class="quem">Movimento</p><h3>Quando lota, quando sobra</h3><p>Mapa de ocupação por dia da semana e hora. Mostra as faixas perto da lotação (reforço de equipe) e as que têm vaga sobrando (planos de horário, parcerias).</p></div>
+      <div class="cartao"><p class="quem">Equipe e contratos</p><h3>Atenção onde precisa</h3><p>Estornos, cancelamentos e diferenças de caixa por operador; mensalistas atrasados e quem paga mas não usa a vaga, antes de cancelar.</p></div>
+      <div class="cartao"><p class="quem">Sem achismo</p><h3>Sugere, não decide</h3><p>Compara só com os dados do próprio estacionamento, não inventa preço e não muda contrato nem manda mensagem sozinho. Roda no computador do estacionamento, sem custo extra.</p></div>
+    </div>
+    <div class="galeria">
+      <figure class="tela"><button type="button"><img src="telas/erp-gestao.jpg" alt="ERP, Gestão e insights: período e cartões O que olhar agora com mensalidades atrasadas, equipe, convites e lotação" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>O que olhar agora</b>Atenção, oportunidade e informação, do mais urgente ao informativo.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-gestao-fluxo.jpg" alt="Fluxo de caixa: líquido do período, média por dia, estornos, previsto em 30 dias e gráfico de entradas por dia" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Fluxo de caixa</b>Realizado dia a dia e previsto em mensalidades, com comparação ao período anterior.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-gestao-ocupacao.jpg" alt="Mapa de movimento por dia da semana e hora, com o pico destacado" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Movimento por dia e hora</b>Média de carros no pátio comparada às vagas; o pico aparece destacado.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-gestao-convites.jpg" alt="Convites para mensalista: placas, dias com visita, quanto gastou e comparação com a mensalidade" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Convites para mensalista</b>Quem vem com frequência e quanto gasta perto da mensalidade de referência.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/pdv-convite.jpg" alt="PDV na entrada de uma placa frequente com o aviso: Cliente frequente, ofereça a mensalidade" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Aviso no PDV</b>Na entrada do cliente frequente, o operador já sabe que vale oferecer o plano.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-gestao-equipe.jpg" alt="Mensalistas em risco e tabela da equipe com recebido, estornos, cancelamentos e diferença de caixa" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Equipe e mensalistas em risco</b>Quem pede conferência e que contrato pode estar perto de cancelar.</figcaption></figure>
+      <div class="celulares">
+        <figure class="tela celular"><button type="button"><img src="telas/celular-gestao.jpg" alt="Gestão e insights no celular do dono, com os cartões O que olhar agora" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>No celular do dono</b>Os achados cabem na tela do telefone.</figcaption></figure>
+      </div>
+    </div>
+    <p class="nota">Telas com dados de demonstração: 60 dias de movimento simulado pelo próprio sistema, com as mesmas regras da operação real.</p>
   </div>
 </section>
 
@@ -340,6 +388,11 @@
         <li>Três modos no ERP: desligada, simples sem foto ou com até 6 fotos.</li>
         <li>Depois de salva, não pode ser alterada; cada foto guarda uma marca (hash) que prova que não mudou.</li>
         <li>As fotos são apagadas sozinhas depois do prazo escolhido; o registro continua.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Gestão e insights</h3><ul>
+        <li>Fluxo de caixa realizado por dia e forma de pagamento, com estornos no dia em que saíram, e previsto das mensalidades.</li>
+        <li>Mapa de movimento por dia e hora: lotação e vaga sobrando.</li>
+        <li>Convites para mensalista com aviso no PDV e no celular quando o cliente frequente entra.</li>
+        <li>Equipe, mensalistas em risco e exportação para planilha. Só supervisor e administrador.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Gestão</h3><ul>
         <li>Painel do dia: faturamento, ocupação, entradas, saídas, caixas abertos.</li>
         <li>Relatório por período, por dia, modalidade, origem e operador.</li>
@@ -555,6 +608,7 @@
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Controles e pátio</div></div><p>Supervisor com autorização, usuários, caixa fechado imutável, mensalidades com aviso de atraso, entrada pelo celular com câmera e impressão.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Operação e pátio</div></div><p>Cópia de segurança automática, aviso de fechamento, lembrete de mensalidade por WhatsApp, recebimento e Pix pelo celular, comprovante por WhatsApp e andamento dos serviços.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Evolução e assinatura</div></div><p>Botão "Relatar" que leva bugs e sugestões para a equipe; licença por assinatura com proteção contra troca de data e Central Ave Labs em teste.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Gestão e insights</div></div><p>Fluxo de caixa realizado e previsto, mapa de movimento, convites para mensalista com aviso no balcão, equipe e mensalistas em risco.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Em teste</span><div class="quando">App do mensalista</div></div><p>Contrato com vários veículos, suspensão e cancelamento; app no celular com acesso por código, pedidos aprovados no ERP, avisos e notificações, rodando na Central de teste.</p></div>
       <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix do totem com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; integração com maquininha (TEF).</p></div>
       <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Central hospedada (com o app do mensalista na internet) e cobrança automática da assinatura; mensalidade paga pelo app com confirmação do provedor; instalador para Windows; emissão de nota fiscal; convênios, cortesias e descontos; adequação à LGPD.</p></div>
@@ -568,7 +622,7 @@
 
 <footer>
   <div class="caixa">
-    <p><b>Ave Labs Parking</b> · MVP versão 0.14 · 15 de novembro de 2026</p>
+    <p><b>Ave Labs Parking</b> · MVP versão 0.15 · 15 de novembro de 2026</p>
     <p style="margin-top:6px">Material de apresentação. Descreve o estado do protótipo de validação; não é oferta comercial nem documento técnico.</p>
   </div>
 </footer>
