@@ -210,13 +210,13 @@
 <div id="vista-apresentacao">
 <header class="capa" id="inicio">
   <div class="caixa">
-    <span class="selo">MVP · versão 0.13 · novembro de 2026</span>
+    <span class="selo">MVP · versão 0.14 · novembro de 2026</span>
     <h1>O estacionamento inteiro em <em>um só sistema</em>.</h1>
     <p class="sub">Caixa, autoatendimento, pátio pelo celular e gestão trabalham com a mesma regra e os mesmos dados. O que o cliente vê no totem é exatamente o que o operador vê no caixa — e o dono vê no painel.</p>
     <div class="numeros">
       <div class="numero"><strong>4</strong><span>ambientes: caixa, celular, totem e gestão</span></div>
       <div class="numero"><strong>1</strong><span>regra de cálculo para todos eles</span></div>
-      <div class="numero"><strong>105</strong><span>testes automáticos das regras de negócio</span></div>
+      <div class="numero"><strong>113</strong><span>testes automáticos das regras de negócio</span></div>
       <div class="numero"><strong>3</strong><span>perfis: operador, supervisor e administrador</span></div>
     </div>
   </div>
@@ -260,7 +260,7 @@
     <div class="galeria">
       <figure class="tela"><button type="button"><img src="telas/pdv-cobranca.jpg" alt="PDV com um ticket aberto: placa, permanência, valor a receber e formas de pagamento" loading="lazy" width="800" height="500"></button>
         <figcaption><b>PDV — frente de caixa</b>Placa ou número do ticket, valor a receber e forma de pagamento. Ao lado, quem está no pátio.</figcaption></figure>
-      <figure class="tela"><button type="button"><img src="telas/erp-painel.jpg" alt="Painel do ERP com faturamento, veículos no pátio, entradas, saídas e ocupação" loading="lazy" width="800" height="506"></button>
+      <figure class="tela"><button type="button"><img src="telas/erp-painel.jpg" alt="Painel do ERP com faturamento, veículos no pátio, entradas, saídas e ocupação" loading="lazy" width="800" height="500"></button>
         <figcaption><b>ERP — painel do dono</b>Faturamento do dia, da semana e do mês, ocupação, caixas abertos e serviços pendentes.</figcaption></figure>
       <div class="celulares">
         <figure class="tela celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular no pátio: placa, ler placa com a câmera, registrar entrada e veículos no pátio" loading="lazy" width="375" height="812"></button>
@@ -274,6 +274,16 @@
         <figcaption><b>Central Ave Labs</b>A visão da Ave Labs: todos os clientes, pagamentos, instalações online e alertas.</figcaption></figure>
       <figure class="tela"><button type="button"><img src="telas/pdv-relatar.jpg" alt="Janela Relatar no PDV para enviar problema ou sugestão de melhoria" loading="lazy" width="800" height="500"></button>
         <figcaption><b>Relatar</b>Qualquer usuário manda um problema ou sugestão; vira tarefa para a equipe.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/pdv-vistoria.jpg" alt="Vistoria de avarias no PDV: desenho do carro com a traseira marcada como amassada" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Vistoria de avarias</b>Na entrada ou na saída, o operador marca no desenho do carro onde há dano e de que tipo. Com ou sem foto, conforme o estacionamento escolher.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/erp-vistoria.jpg" alt="ERP, aba Vistoria de avarias: modos desligada, simples sem foto e com foto, e prazo para guardar as fotos" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>ERP — vistoria</b>O dono liga a vistoria simples ou com foto, decide se a foto é obrigatória e por quantos dias as fotos ficam guardadas.</figcaption></figure>
+      <div class="celulares">
+        <figure class="tela celular"><button type="button"><img src="telas/celular-vistoria.jpg" alt="Vistoria de avarias no celular do pátio, com o desenho do carro e o botão de foto" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — vistoria</b>A foto sai direto da câmera do celular.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/erp-menu-celular.jpg" alt="Menu do ERP no celular, com as seções agrupadas em Operação, Clientes, Cadastros, Configurações e Sistema" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>ERP no celular</b>Menu em grupos: Operação, Clientes, Cadastros, Configurações e Sistema.</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -325,6 +335,11 @@
         <li>Catálogo de serviços (lavagem, por exemplo) com preço.</li>
         <li>Venda vinculada ao veículo, somada na cobrança.</li>
         <li>O preço fica congelado no momento da venda.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Vistoria de avarias</h3><ul>
+        <li>Pelo PDV ou pelo celular, na entrada e na saída.</li>
+        <li>Três modos no ERP: desligada, simples sem foto ou com até 6 fotos.</li>
+        <li>Depois de salva, não pode ser alterada; cada foto guarda uma marca (hash) que prova que não mudou.</li>
+        <li>As fotos são apagadas sozinhas depois do prazo escolhido; o registro continua.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Gestão</h3><ul>
         <li>Painel do dia: faturamento, ocupação, entradas, saídas, caixas abertos.</li>
         <li>Relatório por período, por dia, modalidade, origem e operador.</li>
@@ -553,7 +568,7 @@
 
 <footer>
   <div class="caixa">
-    <p><b>Ave Labs Parking</b> · MVP versão 0.13 · 15 de novembro de 2026</p>
+    <p><b>Ave Labs Parking</b> · MVP versão 0.14 · 15 de novembro de 2026</p>
     <p style="margin-top:6px">Material de apresentação. Descreve o estado do protótipo de validação; não é oferta comercial nem documento técnico.</p>
   </div>
 </footer>
