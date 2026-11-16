@@ -223,13 +223,13 @@
 <div id="vista-apresentacao">
 <header class="capa" id="inicio">
   <div class="caixa">
-    <span class="selo">MVP · versão 0.15 · novembro de 2026</span>
+    <span class="selo">MVP · versão 0.16 · novembro de 2026</span>
     <h1>O estacionamento inteiro em <em>um só sistema</em>.</h1>
     <p class="sub">Caixa, autoatendimento, pátio pelo celular e gestão trabalham com a mesma regra e os mesmos dados. O que o cliente vê no totem é exatamente o que o operador vê no caixa — e o dono vê no painel.</p>
     <div class="numeros">
       <div class="numero"><strong>4</strong><span>ambientes: caixa, celular, totem e gestão</span></div>
       <div class="numero"><strong>1</strong><span>regra de cálculo para todos eles</span></div>
-      <div class="numero"><strong>119</strong><span>testes automáticos das regras de negócio</span></div>
+      <div class="numero"><strong>123</strong><span>testes automáticos das regras de negócio</span></div>
       <div class="numero"><strong>3</strong><span>perfis: operador, supervisor e administrador</span></div>
     </div>
   </div>
@@ -257,8 +257,8 @@
     <p class="olho">Ambientes</p>
     <h2 class="titulo-secao">Quatro telas, cada uma para quem a usa.</h2>
     <div class="grade g4">
-      <div class="cartao"><p class="quem">Operador</p><h3>PDV — frente de caixa</h3><p>Entrada, cobrança, serviços, mensalidades e caixa. Operado por teclado (F1 a F10) ou toque.</p></div>
-      <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Entrada de veículos lendo a placa com a câmera, recebimento (dinheiro, maquininha ou Pix pelo QR do estacionamento), comprovante por WhatsApp e liberação de saída.</p></div>
+      <div class="cartao"><p class="quem">Operador</p><h3>PDV — frente de caixa</h3><p>Números do pátio no alto, entrada, cobrança, convênio, serviços, mensalidades e caixa. Operado pelo teclado (inclusive no Mac) ou por toque.</p></div>
+      <div class="cartao"><p class="quem">Operador no pátio</p><h3>Celular</h3><p>Abre nos números do pátio, com botões grandes de Entrada e Saída, como numa maquininha. Entrada de veículos lendo a placa com a câmera, recebimento (dinheiro, maquininha ou Pix pelo QR do estacionamento), comprovante por WhatsApp e liberação de saída.</p></div>
       <div class="cartao"><p class="quem">Cliente final</p><h3>Totem — autoatendimento</h3><p>O cliente digita a placa, confere o valor e paga por Pix, sem operador.</p></div>
       <div class="cartao"><p class="quem">Supervisor e dono</p><h3>ERP — gestão</h3><p>Painel do dia, pátio, caixas, relatórios, gestão e insights (fluxo de caixa, convites para mensalista), mensalistas, serviços, terminais, tarifa, usuários e auditoria.</p></div>
     </div>
@@ -271,15 +271,17 @@
     <h2 class="titulo-secao">Como o sistema aparece para cada um.</h2>
     <p class="intro">Telas reais do sistema, com dados de demonstração. Toque na imagem para ampliar. As telas do app do mensalista estão em <a href="#app-mensalista">App do mensalista</a>.</p>
     <div class="galeria">
-      <figure class="tela"><button type="button"><img src="telas/pdv-cobranca.jpg" alt="PDV com um ticket aberto: placa, permanência, valor a receber e formas de pagamento" loading="lazy" width="800" height="500"></button>
-        <figcaption><b>PDV — frente de caixa</b>Placa ou número do ticket, valor a receber e forma de pagamento. Ao lado, quem está no pátio.</figcaption></figure>
+      <figure class="tela"><button type="button"><img src="telas/pdv-cobranca.jpg" alt="PDV com os números do pátio no alto (no pátio, a pagar, liberados, saíram hoje), um ticket aberto com valor a receber e formas de pagamento, e a lista do pátio ao lado" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>PDV — frente de caixa</b>No alto, os números do pátio: um clique em "A pagar" ou "Podem sair" filtra a lista ao lado. No meio, o ticket, o valor e a forma de pagamento.</figcaption></figure>
       <figure class="tela"><button type="button"><img src="telas/erp-painel.jpg" alt="Painel do ERP com faturamento, veículos no pátio, entradas, saídas e ocupação" loading="lazy" width="800" height="500"></button>
         <figcaption><b>ERP — painel do dono</b>Faturamento do dia, da semana e do mês, ocupação, caixas abertos e serviços pendentes.</figcaption></figure>
       <div class="celulares">
-        <figure class="tela celular"><button type="button"><img src="telas/celular-patio.jpg" alt="Tela do celular no pátio: placa, ler placa com a câmera, registrar entrada e veículos no pátio" loading="lazy" width="375" height="812"></button>
-          <figcaption><b>Celular — pátio</b>Entrada lendo a placa com a câmera.</figcaption></figure>
-        <figure class="tela celular"><button type="button"><img src="telas/celular-receber.jpg" alt="Celular com ticket aberto e botões para receber em dinheiro, débito, crédito ou Pix" loading="lazy" width="375" height="812"></button>
-          <figcaption><b>Celular — receber</b>Dinheiro, maquininha ou Pix, ali mesmo.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/celular-inicio.jpg" alt="Tela inicial do celular: quadros No pátio, A pagar, Podem sair e Saíram hoje, botões grandes de Entrada e Saída e menu com Veículos no pátio e Meu caixa" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — início</b>Os números do pátio e os botões de Entrada e Saída.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/celular-lista.jpg" alt="Lista de veículos no pátio filtrada em A pagar, com placa, hora de entrada, permanência e valor" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — pátio</b>Tocar num número abre a lista já filtrada.</figcaption></figure>
+        <figure class="tela celular"><button type="button"><img src="telas/celular-receber.jpg" alt="Tela Saída e cobrança no celular: ticket com permanência, valor a receber e botões para receber em dinheiro, débito, crédito ou Pix" loading="lazy" width="375" height="812"></button>
+          <figcaption><b>Celular — saída</b>Dinheiro, maquininha ou Pix, ali mesmo.</figcaption></figure>
       </div>
       <figure class="tela"><button type="button"><img src="telas/erp-licenca.jpg" alt="Aba Licença do ERP com situação ativa, plano, data paga e campos de ativação" loading="lazy" width="800" height="500"></button>
         <figcaption><b>ERP — licença</b>O cliente vê o plano, até quando está pago e quantos dias funciona sem Internet.</figcaption></figure>
@@ -345,7 +347,7 @@
       <div class="passo"><h3>Permanência</h3><p>O valor cresce conforme a tarifa. Mensalista em dia não paga estadia. Serviços, como lavagem, são somados.</p></div>
       <div class="passo"><h3>Pagamento</h3><p>No caixa (dinheiro, débito, crédito ou Pix, até dividido) ou no totem, por Pix.</p></div>
       <div class="passo"><h3>Saída</h3><p>Liberada só com o valor quitado. Depois de pagar há um prazo para sair; passou, cobra a diferença.</p></div>
-      <div class="passo"><h3>Fechamento</h3><p>O operador conta o dinheiro; o sistema compara com o esperado e imprime o relatório.</p></div>
+      <div class="passo"><h3>Fechamento</h3><p>O operador conta o dinheiro sem saber quanto deveria ter (caixa cego); o sistema compara com o esperado e imprime o relatório.</p></div>
       <div class="passo"><h3>Gestão</h3><p>O dono vê faturamento, ocupação, caixas, estornos e auditoria, e exporta para planilha.</p></div>
     </div>
   </div>
@@ -371,6 +373,7 @@
         <li>Abertura com fundo de troco; um caixa por operador.</li>
         <li>Suprimento e sangria com motivo.</li>
         <li>Fechamento com conferência do dinheiro contado.</li>
+        <li>Caixa cego: o operador não vê o recebido nem o esperado na gaveta enquanto o caixa está aberto.</li>
         <li>Só o dinheiro entra na gaveta; cartão e Pix aparecem no resumo.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Mensalistas</h3><ul>
         <li>Plano com validade; em dia, entra e sai sem pagar estadia.</li>
@@ -409,10 +412,16 @@
         <li>Bloqueio temporário após senhas erradas.</li>
         <li>Acesso pelo celular e tablet em rede privada.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Pátio pelo celular</h3><ul>
+        <li>Tela inicial com os números do pátio: no pátio e vagas livres, a pagar, podem sair (pagos ainda no pátio) e saídas do dia. Os mesmos números aparecem no alto do PDV.</li>
         <li>Recebe no celular, com o caixa do operador aberto.</li>
         <li>Pix pelo QR Code da chave do próprio estacionamento.</li>
         <li>Comprovante enviado por WhatsApp.</li>
         <li>Andamento dos serviços: solicitado, em execução, concluído.</li></ul></div>
+      <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Convênio e desconto</h3><ul>
+        <li>Empresas conveniadas (clínica, loja, escritório) com isenção, percentual, valor ou tempo grátis.</li>
+        <li>Número do selo ou carimbo exigido quando o dono quiser; o que a empresa paga fica "a receber", fora do caixa.</li>
+        <li>Desconto especial com motivo e senha de supervisor.</li>
+        <li>Relatório por empresa no ERP, com exportação para planilha.</li></ul></div>
       <div class="cartao"><span class="etiqueta pronto">Pronto</span><h3>Evolução e assinatura</h3><ul>
         <li>Botão "Relatar": bug ou sugestão vira uma tarefa para a equipe Ave Labs.</li>
         <li>Licença por assinatura com renovação automática e proteção contra troca de data.</li>
@@ -461,16 +470,25 @@
   <div class="caixa">
     <p class="olho">Controle</p>
     <h2 class="titulo-secao">O que protege o dinheiro.</h2>
+    <div class="destaque">
+      <h3>Caixa cego</h3>
+      <p>Com o caixa aberto, o operador não vê quanto recebeu nem quanto deveria ter na gaveta: quem sabe o número pode "acertar" a contagem ou tirar a sobra. No fechamento ele conta e informa; se não bater, o sistema diz só "a contagem não confere", sem valor e sem dizer se sobra ou falta, e a tentativa fica registrada. Supervisor e administrador veem tudo. Fechado o caixa, o resultado aparece para todos.</p>
+    </div>
     <div class="grade g3">
-      <div class="cartao"><h3>Supervisor autoriza</h3><p>Sangria, fechamento com diferença, estorno e cancelamento não são feitos pelo operador sozinho. O supervisor digita a própria senha, e fica registrado quem autorizou o quê.</p></div>
+      <div class="cartao"><h3>Supervisor autoriza</h3><p>Sangria, fechamento com diferença, estorno e cancelamento não são feitos pelo operador sozinho. O supervisor digita a própria senha, e fica registrado quem autorizou o quê. Na sangria, a senha vem antes da conferência do saldo, para o operador não descobrir quanto há na gaveta tentando valores.</p></div>
       <div class="cartao"><h3>Caixa fechado não muda</h3><p>Depois de fechado, nem o administrador altera o caixa: o próprio banco de dados recusa. Um estorno posterior aparece como ajuste, ao lado do fechamento original.</p></div>
       <div class="cartao"><h3>Auditoria que não se apaga</h3><p>O histórico de operações não pode ser editado nem excluído. Cada linha diz quando, quem, de onde e em qual terminal.</p></div>
+    </div>
+    <div class="galeria">
+      <figure class="tela"><button type="button"><img src="telas/pdv-caixa-cego.jpg" alt="Caixa do PDV visto pelo operador: aviso de caixa cego, quantidade de recebimentos sem valores e a mensagem A contagem não confere com o sistema" loading="lazy" width="800" height="500"></button>
+        <figcaption><b>Caixa cego, visto pelo operador</b>Só a quantidade de recebimentos, o fundo e as sangrias e suprimentos dele. A contagem errada recebe "não confere", sem o valor esperado.</figcaption></figure>
     </div>
     <div class="rolagem">
     <table>
       <thead><tr><th>Operação</th><th>Operador</th><th>Supervisor</th><th>Administrador</th></tr></thead>
       <tbody>
         <tr><td>Entrada, recebimento, saída</td><td>Sim</td><td>Sim</td><td>Sim</td></tr>
+        <tr><td>Ver recebido e esperado do caixa aberto</td><td>Não (caixa cego)</td><td>Sim</td><td>Sim</td></tr>
         <tr><td>Sangria e fechamento com diferença</td><td>Com autorização</td><td>Sim</td><td>Sim</td></tr>
         <tr><td>Estorno e cancelamento</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
         <tr><td>Painel, caixas, relatórios, auditoria</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
@@ -609,9 +627,10 @@
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Operação e pátio</div></div><p>Cópia de segurança automática, aviso de fechamento, lembrete de mensalidade por WhatsApp, recebimento e Pix pelo celular, comprovante por WhatsApp e andamento dos serviços.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Evolução e assinatura</div></div><p>Botão "Relatar" que leva bugs e sugestões para a equipe; licença por assinatura com proteção contra troca de data e Central Ave Labs em teste.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Gestão e insights</div></div><p>Fluxo de caixa realizado e previsto, mapa de movimento, convites para mensalista com aviso no balcão, equipe e mensalistas em risco.</p></div>
+      <div class="fase feita"><div><span class="etiqueta pronto">Concluído</span><div class="quando">Convênio e pátio</div></div><p>Convênio com empresas e desconto especial; caixa do PDV refeito e operável só pelo teclado; números do pátio no celular e no PDV; caixa cego para o operador.</p></div>
       <div class="fase feita"><div><span class="etiqueta pronto">Em teste</span><div class="quando">App do mensalista</div></div><p>Contrato com vários veículos, suspensão e cancelamento; app no celular com acesso por código, pedidos aprovados no ERP, avisos e notificações, rodando na Central de teste.</p></div>
-      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix do totem com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; integração com maquininha (TEF).</p></div>
-      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Central hospedada (com o app do mensalista na internet) e cobrança automática da assinatura; mensalidade paga pelo app com confirmação do provedor; instalador para Windows; emissão de nota fiscal; convênios, cortesias e descontos; adequação à LGPD.</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Dinheiro real</div></div><p>Pix do totem com provedor de pagamento e conciliação; impressão direta, sem janela; totem em modo quiosque; integração com maquininha (TEF); estudo de maquininha Android com impressora (a tela do celular já está no formato).</p></div>
+      <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Produto comercial</div></div><p>Central hospedada (com o app do mensalista na internet) e cobrança automática da assinatura; mensalidade paga pelo app com confirmação do provedor; instalador para Windows; emissão de nota fiscal; adequação à LGPD.</p></div>
       <div class="fase proxima"><div><span class="etiqueta breve">Em breve</span><div class="quando">Automação</div></div><p>Leitura automática de placas por câmera fixa; abertura de cancela; vários computadores na mesma rede; versão em nuvem para várias unidades.</p></div>
     </div>
     <p class="intro" style="font-size:16px">As fases futuras dependem de decisões que ainda serão tomadas — escolha de provedor de pagamento, de equipamentos e de regras fiscais. Nada disso foi contratado.</p>
@@ -622,7 +641,7 @@
 
 <footer>
   <div class="caixa">
-    <p><b>Ave Labs Parking</b> · MVP versão 0.15 · 15 de novembro de 2026</p>
+    <p><b>Ave Labs Parking</b> · MVP versão 0.16 · 16 de novembro de 2026</p>
     <p style="margin-top:6px">Material de apresentação. Descreve o estado do protótipo de validação; não é oferta comercial nem documento técnico.</p>
   </div>
 </footer>
